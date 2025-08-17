@@ -46,6 +46,6 @@ public abstract class Publicacion {
 		return "Título: " + titulo + "\n Autor: " + autor + "\n Año: " + anio;
 	}
 	
-	
+	public void prueba() {}
 	
 }
