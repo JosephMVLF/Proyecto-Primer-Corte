@@ -34,7 +34,7 @@ public class MenuPrincipal extends JFrame{
 		
 		this.setVisible(true);
 		
-		 lblBienvenida = new JLabel("Bienvenido!!!");
+		lblBienvenida = new JLabel("Bienvenido!!!");
 		lblBienvenida.setFont(new Font("Segoe UI", Font.BOLD, 24));
 		lblBienvenida.setForeground(Color.black);
 		lblBienvenida.setBounds(170, 20, 200, 40);
@@ -44,6 +44,10 @@ public class MenuPrincipal extends JFrame{
 		lblPregunta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		lblPregunta.setBounds(140, 60, 250, 30);
 		add(lblPregunta);
+		
+		btnCrear = new JButton("Crear");
+		btnCrear.setBounds(300, 0, 100, 100);
+		add(btnCrear);
 		
 		
 	}
