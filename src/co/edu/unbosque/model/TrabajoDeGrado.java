@@ -35,7 +35,7 @@ public class TrabajoDeGrado extends Publicacion{
 	}
 	@Override
 	public String toString() {
-		return super.toString() + "\n Carrera del autor: " + carreraAutor + " \n Tema del trabajo de grado: " + tema ;
+		return super.toString() + "\n autor: " + carreraAutor + " \n Tema del trabajo de grado: " + tema ;
 	}
 	
 	
