@@ -46,8 +46,12 @@ public class MenuPrincipal extends JFrame{
 		add(lblPregunta);
 		
 		btnCrear = new JButton("Crear");
-		btnCrear.setBounds(300, 0, 100, 100);
+		btnCrear.setBounds(300, 300, 100, 100);
 		add(btnCrear);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBounds(0, 300, 100, 100);
+		add(btnEliminar);
 		
 		
 	}
