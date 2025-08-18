@@ -53,6 +53,10 @@ public class MenuPrincipal extends JFrame{
 		btnEliminar.setBounds(0, 300, 100, 100);
 		add(btnEliminar);
 		
+		btnMostrar = new JButton("Mostrar");
+		btnMostrar.setBounds(240, 80, 100, 100);
+		add(btnMostrar);
+		
 		
 	}
 
