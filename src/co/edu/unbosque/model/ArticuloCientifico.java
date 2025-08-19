@@ -44,7 +44,7 @@ public class ArticuloCientifico extends Publicacion{
 
 	@Override
 	public String toString() {
-		return "\n Tema:" + tema + "\n Pertenece a la esta rama de la ciencia: " + RamaDeCiencia;
+		return super.toString() + "\n Tema:" + tema + "\n Pertenece a la esta rama de la ciencia: " + RamaDeCiencia;
 	}
 
 }
