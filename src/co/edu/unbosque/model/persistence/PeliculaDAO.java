@@ -23,7 +23,7 @@ public class PeliculaDAO implements DAO<Pelicula>{
 		for (Pelicula pelicula : listaPelicula) {
 			contenido += pelicula.toString();
 		}
-		return null;
+		return contenido;
 	}
 
 	@Override
@@ -60,8 +60,15 @@ public class PeliculaDAO implements DAO<Pelicula>{
 
 	@Override
 	public int contar() {
-		// TODO Auto-generated method stub
-		return 0;
+		return listaPelicula.size();
+	}
+
+	public ArrayList<Pelicula> getListaPelicula() {
+		return listaPelicula;
+	}
+
+	public void setListaPelicula(ArrayList<Pelicula> listaPelicula) {
+		this.listaPelicula = listaPelicula;
 	}
 
 }

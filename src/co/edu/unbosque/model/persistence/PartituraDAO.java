@@ -6,8 +6,16 @@ import co.edu.unbosque.model.Partitura;
 
 public class PartituraDAO implements DAO<Partitura>{
 	
-	ArrayList<Partitura> listaPartitura;
+	private ArrayList<Partitura> listaPartitura;
 	
+	public ArrayList<Partitura> getListaPartitura() {
+		return listaPartitura;
+	}
+
+	public void setListaPartitura(ArrayList<Partitura> listaPartitura) {
+		this.listaPartitura = listaPartitura;
+	}
+
 	public PartituraDAO() {
 		listaPartitura = new ArrayList<Partitura>();
 	}
@@ -24,7 +32,7 @@ public class PartituraDAO implements DAO<Partitura>{
 		for (Partitura partitura : listaPartitura) {
 			contenido += partitura.toString();
 		}
-		return null;
+		return contenido;
 	}
 
 	@Override
@@ -54,15 +62,14 @@ public class PartituraDAO implements DAO<Partitura>{
 	}
 
 	@Override
-	public boolean filtrar(Partitura datoABuscar) {
+	public boolean filtrar(Partitura datoABuscar) { //Case con cada atributo
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public int contar() {
-		// TODO Auto-generated method stub
-		return 0;
+		return listaPartitura.size();
 	}
 	
 	
