@@ -53,7 +53,7 @@ public class PeliculaDAO implements DAO<Pelicula>{
 	}
 
 	@Override
-	public boolean filtrar(Pelicula datoABuscar) {
+	public boolean filtrar(Object datoABuscar) {
 		
 		return false;
 	}

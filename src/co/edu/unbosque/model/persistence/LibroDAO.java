@@ -64,7 +64,7 @@ public class LibroDAO implements DAO<Libro>{
 	}
 
 	@Override
-	public boolean filtrar(Libro datoABuscar) {
+	public boolean filtrar(Object datoABuscar) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -74,4 +74,5 @@ public class LibroDAO implements DAO<Libro>{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 }

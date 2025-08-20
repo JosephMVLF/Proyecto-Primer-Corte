@@ -62,7 +62,7 @@ public class PartituraDAO implements DAO<Partitura>{
 	}
 
 	@Override
-	public boolean filtrar(Partitura datoABuscar) { //Case con cada atributo
+	public boolean filtrar(Object datoABuscar) { //Case con cada atributo
 		// TODO Auto-generated method stub
 		return false;
 	}

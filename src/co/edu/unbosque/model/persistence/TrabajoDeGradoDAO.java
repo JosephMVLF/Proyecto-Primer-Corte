@@ -1,13 +1,14 @@
 package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import co.edu.unbosque.model.TrabajoDeGrado;
 
-public class TrabajoDeGradoDAO implements DAO<TrabajoDeGrado>{
-	
+public class TrabajoDeGradoDAO implements DAO<TrabajoDeGrado> {
+
 	private ArrayList<TrabajoDeGrado> listaTrabajoDeGrado;
-	
+
 	public ArrayList<TrabajoDeGrado> getListaTrabajoDeGrado() {
 		return listaTrabajoDeGrado;
 	}
@@ -18,17 +19,18 @@ public class TrabajoDeGradoDAO implements DAO<TrabajoDeGrado>{
 
 	public TrabajoDeGradoDAO() {
 		listaTrabajoDeGrado = new ArrayList<TrabajoDeGrado>();
+
 	}
 
 	@Override
 	public void crear(TrabajoDeGrado nuevoDato) {
 		listaTrabajoDeGrado.add(nuevoDato);
-		
+
 	}
 
 	@Override
 	public String mostrar() {
-		String contenido="";
+		String contenido = "";
 		for (TrabajoDeGrado TrabajoDeGrado : listaTrabajoDeGrado) {
 			contenido += TrabajoDeGrado.toString();
 		}
@@ -39,7 +41,7 @@ public class TrabajoDeGradoDAO implements DAO<TrabajoDeGrado>{
 	public boolean eliminiar(int indice) {
 		if (indice < 0 || indice >= listaTrabajoDeGrado.size()) {
 			return false;
-		}else {
+		} else {
 			listaTrabajoDeGrado.remove(indice);
 			return true;
 		}
@@ -55,26 +57,41 @@ public class TrabajoDeGradoDAO implements DAO<TrabajoDeGrado>{
 	public boolean actualizar(int indice, TrabajoDeGrado datoActualizado) {
 		if (indice < 0 || indice >= listaTrabajoDeGrado.size()) {
 			return false;
-		}else {
+		} else {
 			listaTrabajoDeGrado.set(indice, datoActualizado);
 			return true;
 		}
 	}
 
 	@Override
-	public boolean filtrar(TrabajoDeGrado datoABuscar) { //Case con cada atributo
-		// TODO Auto-generated method stub
-		return false;
+	public boolean filtrar(Object datoABuscar) { // Case con cada atributo
+		boolean encontrado = false;
+
+		for (TrabajoDeGrado trabajo : listaTrabajoDeGrado) {
+			// Si el dato es un String → buscar en autor o título
+			if (datoABuscar instanceof String) {
+				String texto = (String) datoABuscar;
+				if (trabajo.getAutor().equalsIgnoreCase(texto) || trabajo.getTitulo().equalsIgnoreCase(texto)) {
+					System.out.println("Encontrado: " + trabajo);
+					encontrado = true;
+				}
+			}
+			// Si el dato es un Integer → buscar por año
+			else if (datoABuscar instanceof Integer) {
+				int anio = (Integer) datoABuscar;
+				if (trabajo.getAnio() == anio) {
+					System.out.println("Encontrado: " + trabajo);
+					encontrado = true;
+				}
+			}
+		}
+
+		return encontrado;
 	}
 
 	@Override
 	public int contar() {
 		return listaTrabajoDeGrado.size();
 	}
-	
-	
 
 }
-
-
-

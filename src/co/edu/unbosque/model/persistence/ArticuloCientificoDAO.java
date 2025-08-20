@@ -63,7 +63,7 @@ public class ArticuloCientificoDAO implements DAO<ArticuloCientifico> {
 	}
 
 	@Override
-	public boolean filtrar(ArticuloCientifico datoABuscar) {
+	public boolean filtrar(Object datoABuscar) {
 		// TODO Auto-generated method stub
 		return false;
 	}

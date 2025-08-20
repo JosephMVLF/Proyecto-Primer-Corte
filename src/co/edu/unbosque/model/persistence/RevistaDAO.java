@@ -61,7 +61,7 @@ public class RevistaDAO implements DAO<Revista>{
 	}
 
 	@Override
-	public boolean filtrar(Revista datoABuscar) { //Case con cada atributo
+	public boolean filtrar(Object datoABuscar) { //Case con cada atributo
 		// TODO Auto-generated method stub
 		return false;
 	}
