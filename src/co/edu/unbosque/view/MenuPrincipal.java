@@ -8,57 +8,88 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MenuPrincipal extends JFrame {
+public class MenuPrincipal extends JFrame{
 
 	private JButton btnCrear;
 	private JButton btnMostrar;
 	private JButton btnActualizar;
 	private JButton btnEliminar;
 	private JButton btnSalir;
+	private JButton btnArticulo;
+	private JButton btnLibro;
+	private JButton btnPartitura;
+	private JButton btnPelicula;
+	private JButton btnRevista;
+	private JButton btnTesis;
+	private JButton btnTrabajoDeGrado;
 	private JLabel label1;
 	private JLabel lblBienvenida;
 	private JLabel lblPregunta;
-
+	
+	
+	
 	public MenuPrincipal() {
 		initComponents();
 	}
-
+	
 	private void initComponents() {
 		this.setTitle("Menú Principal");
-		this.setBounds(240, 10, 900, 700);
-		this.setResizable(false);
+		this.setBounds(10, 10, 1200, 900);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(null);
 		this.getContentPane().setBackground(Color.WHITE);
-
+		
+		
 		this.setVisible(true);
-
+		
 		lblBienvenida = new JLabel("Bienvenido a la Biblioteca de la Universidad El Bosque");
 		lblBienvenida.setFont(new Font("Segoe UI", Font.BOLD, 24));
 		lblBienvenida.setForeground(Color.black);
-		lblBienvenida.setBounds(350, 20, 200, 40);
 		lblBienvenida.setBounds(200, 20, 700, 40);
 		add(lblBienvenida);
-
-		lblPregunta = new JLabel("¿Qué acción deseas realizar?");
+		
+		lblPregunta = new JLabel("¿A qué publicación deseas ingresar?");
 		lblPregunta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		lblPregunta.setBounds(310, 60, 250, 30);
-		lblPregunta.setBounds(400, 60, 250, 30);
+		lblPregunta.setBounds(400, 60, 400, 30);
 		add(lblPregunta);
 		
-		btnCrear = new JButton("Crear");
-		btnCrear.setBounds(420, 300, 100, 100);
-		btnCrear.setBounds(0, 300, 100, 100);
-		add(btnCrear);
+		btnArticulo = new JButton("Articulo");
+		btnArticulo.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		btnArticulo.setBounds(0,300, 100, 100);
+		add(btnArticulo);
+		
+		btnLibro = new JButton("Libro");
+		btnLibro.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		btnLibro.setBounds(0,400, 100, 100);
+		add(btnLibro);
+		
+		btnPartitura = new JButton("Partitura");
+		btnPartitura.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		btnPartitura.setBounds(0,500, 100, 100);
+		add(btnPartitura);
+		
+		btnPelicula = new JButton("Pelicula");
+		btnPelicula.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		btnPelicula.setBounds(0,600, 100, 100);
+		add(btnPelicula);
+		
+		btnRevista = new JButton("Revista");
+		btnRevista.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		btnRevista.setBounds(200,300, 100, 100);
+		add(btnRevista);
+		
+		btnTesis = new JButton("Tesis");
+		btnTesis.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		btnTesis.setBounds(200,400, 100, 100);
+		add(btnTesis);
+		
+		btnTrabajoDeGrado = new JButton("Trabajo de grado");
+		btnTrabajoDeGrado.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		btnTrabajoDeGrado.setBounds(200,500, 100, 100);
+		add(btnTrabajoDeGrado);
 
-		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(0, 500, 100, 100);
-		add(btnEliminar);
-
-		btnMostrar = new JButton("Mostrar");
-		btnMostrar.setBounds(0, 400, 100, 100);
-		add(btnMostrar);
-
+		
+		
 	}
 
 	public JButton getBtnCrear() {
@@ -125,4 +156,63 @@ public class MenuPrincipal extends JFrame {
 		this.lblPregunta = lblPregunta;
 	}
 
+	public JButton getBtnArticulo() {
+		return btnArticulo;
+	}
+
+	public void setBtnArticulo(JButton btnArticulo) {
+		this.btnArticulo = btnArticulo;
+	}
+
+	public JButton getBtnLibro() {
+		return btnLibro;
+	}
+
+	public void setBtnLibro(JButton btnLibro) {
+		this.btnLibro = btnLibro;
+	}
+
+	public JButton getBtnPartitura() {
+		return btnPartitura;
+	}
+
+	public void setBtnPartitura(JButton btnPartitura) {
+		this.btnPartitura = btnPartitura;
+	}
+
+	public JButton getBtnPelicula() {
+		return btnPelicula;
+	}
+
+	public void setBtnPelicula(JButton btnPelicula) {
+		this.btnPelicula = btnPelicula;
+	}
+
+	public JButton getBtnRevista() {
+		return btnRevista;
+	}
+
+	public void setBtnRevista(JButton btnRevista) {
+		this.btnRevista = btnRevista;
+	}
+
+	public JButton getBtnTesis() {
+		return btnTesis;
+	}
+
+	public void setBtnTesis(JButton btnTesis) {
+		this.btnTesis = btnTesis;
+	}
+
+	public JButton getBtnTrabajoDeGrado() {
+		return btnTrabajoDeGrado;
+	}
+
+	public void setBtnTrabajoDeGrado(JButton btnTrabajoDeGrado) {
+		this.btnTrabajoDeGrado = btnTrabajoDeGrado;
+	}
+	
+
+	
+	
 }
