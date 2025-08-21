@@ -47,7 +47,7 @@ public class MenuPrincipal extends JFrame{
 		lblBienvenida.setBounds(200, 20, 700, 40);
 		add(lblBienvenida);
 		
-		lblPregunta = new JLabel("¿A qué publicación deseas ingresar?");
+		lblPregunta = new JLabel("¿Qué va a realizar el día de hoy?");
 		lblPregunta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		lblPregunta.setBounds(400, 60, 400, 30);
 		add(lblPregunta);
@@ -89,21 +89,24 @@ public class MenuPrincipal extends JFrame{
 		add(btnTrabajoDeGrado);
 
 		btnCrear = new JButton("Crear");
+		btnCrear.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		btnCrear.setBounds(100, 300, 100, 50);
-		btnCrear.setBounds(420, 300, 100, 100);
-		btnCrear.setBounds(0, 300, 100, 100);
 		add(btnCrear);
-
+		
+		
 		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		btnEliminar.setBounds(100, 600, 100, 50);
 		add(btnEliminar);
 
 		btnMostrar = new JButton("Mostrar");
+		btnMostrar.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		btnMostrar.setBounds(100, 400, 100, 50);
 		add(btnMostrar);
 
 		
 		btnActualizar = new JButton("Actualizar");
+		btnActualizar.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		btnActualizar.setBounds(100, 500, 100, 50);
 		add(btnActualizar);
 	

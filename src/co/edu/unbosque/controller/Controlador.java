@@ -16,7 +16,7 @@ import co.edu.unbosque.model.persistence.LibroDAO;
 import co.edu.unbosque.model.persistence.TrabajoDeGradoDAO;
 import co.edu.unbosque.view.Consola;
 import co.edu.unbosque.view.MenuPrincipal;
-import co.edu.unbosque.view.RegistroLibro;
+import co.edu.unbosque.view.RegistroPublicacion;
 
 
 public class Controlador implements ActionListener{
@@ -25,7 +25,7 @@ public class Controlador implements ActionListener{
 	private Consola con;
 	private MenuPrincipal mp;
 
-	private RegistroLibro rl;
+	private RegistroPublicacion rp;
 
 	private LibroDAO obL;
 	
@@ -34,13 +34,13 @@ public class Controlador implements ActionListener{
 	public Controlador() {
 		con = new Consola();
 		mp = new MenuPrincipal();
-
+		
 	}
 
 	public void runGUI() {
 		mp.setVisible(true);
-		rl= new RegistroLibro();
-		rl.setVisible(false);
+		rp= new RegistroPublicacion();
+		rp.setVisible(false);
 		
 		agregarOyentes();
 
@@ -52,7 +52,7 @@ public class Controlador implements ActionListener{
 		int opcion=0;
 		do {
 			con.escribirSinSalto("Eliga la opción que desea realizar ");
-			con.escribirConSalto("1. Crear"
+			con.escribirConSalto("\n1. Crear"
 					+ "\n2. Mostrar"
 					+ "\n3. Eliminar"
 					+ "\n4. Actualizar"
@@ -164,33 +164,38 @@ public class Controlador implements ActionListener{
 		
 		mp.getBtnEliminar().addActionListener(this);
 		mp.getBtnEliminar().setActionCommand("BOTON_ELIMINAR");
+		
+		
 		}
 
 	public void actionPerformed(ActionEvent e) {
-		String alias = e.getActionCommand();
+	    String alias = e.getActionCommand();
 
-		switch (alias) {
-		case "BOTON_LIBRO": {
-			
-		mp.setVisible(false);
-		rl.setResizable(true);
-			break;
-		}
-		case "BotonMostrar": {
-			JOptionPane.showMessageDialog(null, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE, null);
-			break;
-		}
-		case "BotonActualizar": {
-			JOptionPane.showMessageDialog(null, "¿Pregunta?", "PREGUNTA", JOptionPane.QUESTION_MESSAGE, null);
-			break;
-		}
-		case "BotonEliminar": {
-			JOptionPane.showMessageDialog(null, "ADVERTENCIA", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE, null);
-			break;
-		}
-
-		}
+	    switch (alias) {
+	        case "BOTON_CREAR": {
+	            mp.setVisible(false); 
+	            rp.setVisible(true);  
+	            break;
+	        }
+	        
+	           
+	        
+	        case "BOTON_MOSTRAR": {
+	            JOptionPane.showMessageDialog(null, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE, null);
+	            break;
+	        }
+	        case "BOTON_ACTUALIZAR": {
+	            JOptionPane.showMessageDialog(null, "¿Pregunta?", "PREGUNTA", JOptionPane.QUESTION_MESSAGE, null);
+	            break;
+	        }
+	        case "BOTON_ELIMINAR": {
+	            JOptionPane.showMessageDialog(null, "ADVERTENCIA", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE, null);
+	            break;
+	        }
+	        
+	    }
 	}
+
 
 }
 
