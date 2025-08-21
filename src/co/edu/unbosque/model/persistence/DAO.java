@@ -1,7 +1,5 @@
 package co.edu.unbosque.model.persistence;
 
-import java.util.ArrayList;
-
 public interface DAO <E>{
 	
 	public void crear(E nuevoDato);

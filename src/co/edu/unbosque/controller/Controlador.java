@@ -29,12 +29,9 @@ public class Controlador {
 	        dao.crear(new TrabajoDeGrado("Ana", "Big Data", 2021));
 
 	        System.out.println("Buscar por autor:");
-	        dao.filtrar("Ana");
-
-	        System.out.println("\nBuscar por título:");
-	        dao.filtrar("Robótica Avanzada");
+	        dao.filtrar("Luis");
 
 	        System.out.println("\nBuscar por año:");
-	        dao.filtrar(2022);
+	        dao.filtrar(2023);
 	}
 }
