@@ -34,10 +34,10 @@ public class MenuPrincipal extends JFrame{
 		
 		this.setVisible(true);
 		
-		lblBienvenida = new JLabel("Bienvenido!!!");
+		lblBienvenida = new JLabel("Bienvenido a Biblioteca de la Universidad El Bosque");
 		lblBienvenida.setFont(new Font("Segoe UI", Font.BOLD, 24));
 		lblBienvenida.setForeground(Color.black);
-		lblBienvenida.setBounds(170, 20, 200, 40);
+		lblBienvenida.setBounds(200, 20, 200, 40);
 		add(lblBienvenida);
 		
 		lblPregunta = new JLabel("¿Qué acción deseas realizar?");
@@ -46,15 +46,15 @@ public class MenuPrincipal extends JFrame{
 		add(lblPregunta);
 		
 		btnCrear = new JButton("Crear");
-		btnCrear.setBounds(300, 300, 100, 100);
+		btnCrear.setBounds(0, 300, 100, 100);
 		add(btnCrear);
 		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(0, 300, 100, 100);
+		btnEliminar.setBounds(0, 500, 100, 100);
 		add(btnEliminar);
 		
 		btnMostrar = new JButton("Mostrar");
-		btnMostrar.setBounds(240, 80, 100, 100);
+		btnMostrar.setBounds(0, 400, 100, 100);
 		add(btnMostrar);
 		
 		
