@@ -26,7 +26,8 @@ public class MenuPrincipal extends JFrame{
 	
 	private void initComponents() {
 		this.setTitle("Menú Principal");
-		this.setBounds(10, 10, 1200, 900);
+		this.setBounds(240, 10, 900, 700);
+		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(null);
 		this.getContentPane().setBackground(Color.WHITE);
@@ -37,16 +38,16 @@ public class MenuPrincipal extends JFrame{
 		lblBienvenida = new JLabel("Bienvenido!!!");
 		lblBienvenida.setFont(new Font("Segoe UI", Font.BOLD, 24));
 		lblBienvenida.setForeground(Color.black);
-		lblBienvenida.setBounds(170, 20, 200, 40);
+		lblBienvenida.setBounds(350, 20, 200, 40);
 		add(lblBienvenida);
 		
 		lblPregunta = new JLabel("¿Qué acción deseas realizar?");
 		lblPregunta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		lblPregunta.setBounds(140, 60, 250, 30);
+		lblPregunta.setBounds(310, 60, 250, 30);
 		add(lblPregunta);
 		
 		btnCrear = new JButton("Crear");
-		btnCrear.setBounds(300, 300, 100, 100);
+		btnCrear.setBounds(320, 300, 100, 100);
 		add(btnCrear);
 		
 		btnEliminar = new JButton("Eliminar");
