@@ -3,19 +3,20 @@ package co.edu.unbosque.model;
 public class Partitura extends Publicacion{
 	
 	private int tempo;
-	private String primeraNota;
+	private String clave;
+	
 	public Partitura() {
 		super();
 	}
-	public Partitura(int tempo, String primeraNota) {
+	public Partitura(int tempo, String clave) {
 		super();
 		this.tempo = tempo;
-		this.primeraNota = primeraNota;
+		this.clave = clave;
 	}
-	public Partitura(String titulo, String autor, int anio, int tempo, String primeraNota) {
+	public Partitura(String titulo, String autor, int anio, int tempo, String clave) {
 		super(titulo, autor, anio);
 		this.tempo = tempo;
-		this.primeraNota = primeraNota;
+		this.clave = clave;
 	}
 	public Partitura(String titulo, String autor, int anio) {
 		super(titulo, autor, anio);
@@ -27,15 +28,15 @@ public class Partitura extends Publicacion{
 	public void setTempo(int tempo) {
 		this.tempo = tempo;
 	}
-	public String getPrimeraNota() {
-		return primeraNota;
+	public String getClave() {
+		return clave;
 	}
-	public void setPrimeraNota(String primeraNota) {
-		this.primeraNota = primeraNota;
+	public void setClave(String clave) {
+		this.clave = clave;
 	}
 	@Override
 	public String toString() {
-		return super.toString() + "\n Tempo: " + tempo + "\n Primera nota de la partitura: " + primeraNota ;
+		return super.toString() + "\n Tempo: " + tempo + "\n Clave de la partitura (SOL, FA, DO): " + clave ;
 	}
 	
 	

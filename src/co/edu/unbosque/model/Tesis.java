@@ -33,7 +33,7 @@ public class Tesis extends Publicacion{
 
 	@Override
 	public String toString() {
-		return super.toString() + "Tesis [tema=" + tema + "]";
+		return super.toString() + "\n tema: " + tema ;
 	}
 	
 	
