@@ -2,11 +2,10 @@ package co.edu.unbosque.view;
 
 import java.awt.Color;
 import java.awt.Font;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
+
 
 public class MenuPrincipal extends JFrame{
 
@@ -53,6 +52,7 @@ public class MenuPrincipal extends JFrame{
 		lblPregunta.setBounds(400, 60, 400, 30);
 		add(lblPregunta);
 		
+
 		btnArticulo = new JButton("Articulo");
 		btnArticulo.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		btnArticulo.setBounds(0,300, 100, 100);
@@ -88,8 +88,26 @@ public class MenuPrincipal extends JFrame{
 		btnTrabajoDeGrado.setBounds(200,500, 100, 100);
 		add(btnTrabajoDeGrado);
 
+		btnCrear = new JButton("Crear");
+		btnCrear.setBounds(100, 300, 100, 50);
+		btnCrear.setBounds(420, 300, 100, 100);
+		btnCrear.setBounds(0, 300, 100, 100);
+		add(btnCrear);
+
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBounds(100, 600, 100, 50);
+		add(btnEliminar);
+
+		btnMostrar = new JButton("Mostrar");
+		btnMostrar.setBounds(100, 400, 100, 50);
+		add(btnMostrar);
+
 		
-		
+		btnActualizar = new JButton("Actualizar");
+		btnActualizar.setBounds(100, 500, 100, 50);
+		add(btnActualizar);
+	
+
 	}
 
 	public JButton getBtnCrear() {
