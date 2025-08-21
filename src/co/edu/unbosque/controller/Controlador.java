@@ -35,7 +35,7 @@ public class Controlador implements ActionListener{
 	        dao.crear(new TrabajoDeGrado("Ana", "Big Data", 2021));
 
 	        System.out.println("Buscar por autor:");
-	        dao.filtrar("Luis");
+	        dao.filtrar("Ana");
 
 	        System.out.println("\nBuscar por año:");
 	        dao.filtrar(2023);
@@ -58,8 +58,12 @@ public class Controlador implements ActionListener{
 
 		switch (alias) {
 		case "BotonCrear": {
-			JOptionPane.showInputDialog(null, "Ingrese el dato: ");
-			JOptionPane.showInputDialog(null, "Ingrese el dato, porque con el dato me come el aparato: ");
+			JOptionPane.showInputDialog(null, "Ingrese el nombre: ");
+			con.leerLineaCompleta();
+			JOptionPane.showInputDialog(null, "Ingrese el año: ");
+			con.leerEntero();
+			JOptionPane.showInputDialog(null, "Ingrese el autor: ");
+			con.leerLineaCompleta();
 			break;
 		}
 		case "BotonMostrar": {

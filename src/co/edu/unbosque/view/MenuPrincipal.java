@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MenuPrincipal extends JFrame{
+public class MenuPrincipal extends JFrame {
 
 	private JButton btnCrear;
 	private JButton btnMostrar;
@@ -18,12 +18,11 @@ public class MenuPrincipal extends JFrame{
 	private JLabel label1;
 	private JLabel lblBienvenida;
 	private JLabel lblPregunta;
-	
-	
+
 	public MenuPrincipal() {
 		initComponents();
 	}
-	
+
 	private void initComponents() {
 		this.setTitle("Menú Principal");
 		this.setBounds(240, 10, 900, 700);
@@ -31,34 +30,35 @@ public class MenuPrincipal extends JFrame{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(null);
 		this.getContentPane().setBackground(Color.WHITE);
-		
-		
+
 		this.setVisible(true);
-		
-		lblBienvenida = new JLabel("Bienvenido!!!");
+
+		lblBienvenida = new JLabel("Bienvenido a la Biblioteca de la Universidad El Bosque");
 		lblBienvenida.setFont(new Font("Segoe UI", Font.BOLD, 24));
 		lblBienvenida.setForeground(Color.black);
 		lblBienvenida.setBounds(350, 20, 200, 40);
+		lblBienvenida.setBounds(200, 20, 700, 40);
 		add(lblBienvenida);
-		
+
 		lblPregunta = new JLabel("¿Qué acción deseas realizar?");
 		lblPregunta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		lblPregunta.setBounds(310, 60, 250, 30);
+		lblPregunta.setBounds(400, 60, 250, 30);
 		add(lblPregunta);
 		
 		btnCrear = new JButton("Crear");
 		btnCrear.setBounds(420, 300, 100, 100);
+		btnCrear.setBounds(0, 300, 100, 100);
 		add(btnCrear);
-		
+
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(0, 300, 100, 100);
+		btnEliminar.setBounds(0, 500, 100, 100);
 		add(btnEliminar);
-		
+
 		btnMostrar = new JButton("Mostrar");
-		btnMostrar.setBounds(240, 80, 100, 100);
+		btnMostrar.setBounds(0, 400, 100, 100);
 		add(btnMostrar);
-		
-		
+
 	}
 
 	public JButton getBtnCrear() {
@@ -124,8 +124,5 @@ public class MenuPrincipal extends JFrame{
 	public void setLblPregunta(JLabel lblPregunta) {
 		this.lblPregunta = lblPregunta;
 	}
-	
 
-	
-	
 }
