@@ -1,6 +1,4 @@
 package co.edu.unbosque.controller;
-
-import java.util.ArrayList;
 import co.edu.unbosque.model.TrabajoDeGrado;
 import co.edu.unbosque.model.persistence.TrabajoDeGradoDAO;
 import co.edu.unbosque.view.Consola;
@@ -18,7 +16,9 @@ public class Controlador {
 
 	public void runGUI() {
 		mp.setVisible(true);
+		
 	}
+	
 
 	public void run() {
 		

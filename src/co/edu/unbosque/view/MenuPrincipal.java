@@ -2,7 +2,6 @@ package co.edu.unbosque.view;
 
 import java.awt.Color;
 import java.awt.Font;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -46,16 +45,20 @@ public class MenuPrincipal extends JFrame{
 		add(lblPregunta);
 		
 		btnCrear = new JButton("Crear");
-		btnCrear.setBounds(0, 300, 100, 100);
+		btnCrear.setBounds(100, 300, 100, 50);
 		add(btnCrear);
 		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(0, 500, 100, 100);
+		btnEliminar.setBounds(100, 600, 100, 50);
 		add(btnEliminar);
 		
 		btnMostrar = new JButton("Mostrar");
-		btnMostrar.setBounds(0, 400, 100, 100);
+		btnMostrar.setBounds(100, 400, 100, 50);
 		add(btnMostrar);
+		
+		btnActualizar = new JButton("Actualizar");
+		btnActualizar.setBounds(100, 500, 100, 50);
+		add(btnActualizar);
 		
 		
 	}
