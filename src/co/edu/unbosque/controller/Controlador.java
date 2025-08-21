@@ -29,7 +29,7 @@ public class Controlador {
 	        dao.crear(new TrabajoDeGrado("Ana", "Big Data", 2021));
 
 	        System.out.println("Buscar por autor:");
-	        dao.filtrar("Luis");
+	        dao.filtrar("Ana");
 
 	        System.out.println("\nBuscar por año:");
 	        dao.filtrar(2023);

@@ -34,15 +34,15 @@ public class MenuPrincipal extends JFrame{
 		
 		this.setVisible(true);
 		
-		lblBienvenida = new JLabel("Bienvenido a Biblioteca de la Universidad El Bosque");
+		lblBienvenida = new JLabel("Bienvenido a la Biblioteca de la Universidad El Bosque");
 		lblBienvenida.setFont(new Font("Segoe UI", Font.BOLD, 24));
 		lblBienvenida.setForeground(Color.black);
-		lblBienvenida.setBounds(200, 20, 200, 40);
+		lblBienvenida.setBounds(200, 20, 700, 40);
 		add(lblBienvenida);
 		
 		lblPregunta = new JLabel("¿Qué acción deseas realizar?");
 		lblPregunta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		lblPregunta.setBounds(140, 60, 250, 30);
+		lblPregunta.setBounds(400, 60, 250, 30);
 		add(lblPregunta);
 		
 		btnCrear = new JButton("Crear");
