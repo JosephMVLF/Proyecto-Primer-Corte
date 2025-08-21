@@ -59,6 +59,7 @@ public class Controlador implements ActionListener{
 		switch (alias) {
 		case "BotonCrear": {
 			JOptionPane.showInputDialog(null, "Ingrese el dato: ");
+			JOptionPane.showInputDialog(null, "Ingrese el dato, porque con el dato me come el aparato: ");
 			break;
 		}
 		case "BotonMostrar": {
