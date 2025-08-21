@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 import co.edu.unbosque.model.Partitura;
 
-public class PartituraDAO implements DAO<Partitura>{
-	
+public class PartituraDAO implements DAO<Partitura> {
+
 	private ArrayList<Partitura> listaPartitura;
-	
+
 	public ArrayList<Partitura> getListaPartitura() {
 		return listaPartitura;
 	}
@@ -23,12 +23,12 @@ public class PartituraDAO implements DAO<Partitura>{
 	@Override
 	public void crear(Partitura nuevoDato) {
 		listaPartitura.add(nuevoDato);
-		
+
 	}
 
 	@Override
 	public String mostrar() {
-		String contenido="";
+		String contenido = "";
 		for (Partitura partitura : listaPartitura) {
 			contenido += partitura.toString();
 		}
@@ -39,7 +39,7 @@ public class PartituraDAO implements DAO<Partitura>{
 	public boolean eliminiar(int indice) {
 		if (indice < 0 || indice >= listaPartitura.size()) {
 			return false;
-		}else {
+		} else {
 			listaPartitura.remove(indice);
 			return true;
 		}
@@ -55,23 +55,41 @@ public class PartituraDAO implements DAO<Partitura>{
 	public boolean actualizar(int indice, Partitura datoActualizado) {
 		if (indice < 0 || indice >= listaPartitura.size()) {
 			return false;
-		}else {
+		} else {
 			listaPartitura.set(indice, datoActualizado);
 			return true;
 		}
 	}
 
 	@Override
-	public boolean filtrar(Object datoABuscar) { //Case con cada atributo
-		// TODO Auto-generated method stub
-		return false;
+	public boolean filtrar(Object datoABuscar) { // Case con cada atributo
+		boolean encontrado = false;
+
+		for (Partitura partitura : listaPartitura) {
+			// Si el dato es un String → buscar en autor o título
+			if (datoABuscar instanceof String) {
+				String texto = (String) datoABuscar;
+				if (partitura.getAutor().equalsIgnoreCase(texto) || partitura.getTitulo().equalsIgnoreCase(texto)) {
+					System.out.println("Encontrado: " + partitura);
+					encontrado = true;
+				}
+			}
+			// Si el dato es un Integer → buscar por año
+			else if (datoABuscar instanceof Integer) {
+				int anio = (Integer) datoABuscar;
+				if (partitura.getAnio() == anio) {
+					System.out.println("Encontrado: " + partitura);
+					encontrado = true;
+				}
+			}
+		}
+
+		return encontrado;
 	}
 
 	@Override
 	public int contar() {
 		return listaPartitura.size();
 	}
-	
-	
 
 }

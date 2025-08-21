@@ -4,15 +4,14 @@ import java.util.ArrayList;
 
 import co.edu.unbosque.model.Libro;
 
-public class LibroDAO implements DAO<Libro>{
+public class LibroDAO implements DAO<Libro> {
 
 	ArrayList<Libro> listaLibro;
-	
+
 	public LibroDAO() {
 		listaLibro = new ArrayList<Libro>();
 	}
 
-	
 	public ArrayList<Libro> getListaLibro() {
 		return listaLibro;
 	}
@@ -21,18 +20,17 @@ public class LibroDAO implements DAO<Libro>{
 		this.listaLibro = listaLibro;
 	}
 
-
 	@Override
 	public void crear(Libro nuevoDato) {
 		listaLibro.add(nuevoDato);
-		
+
 	}
 
 	@Override
 	public String mostrar() {
 		String contenido = "";
 		for (Libro libro : listaLibro) {
-			contenido+=libro.toString();
+			contenido += libro.toString();
 		}
 		return contenido;
 	}
@@ -41,7 +39,7 @@ public class LibroDAO implements DAO<Libro>{
 	public boolean eliminiar(int indice) {
 		if (indice < 0 || indice >= listaLibro.size()) {
 			return false;
-		}else {
+		} else {
 			listaLibro.remove(indice);
 			return true;
 		}
@@ -57,22 +55,41 @@ public class LibroDAO implements DAO<Libro>{
 	public boolean actualizar(int indice, Libro datoActualizado) {
 		if (indice < 0 || indice >= listaLibro.size()) {
 			return false;
-		}else {
+		} else {
 			listaLibro.set(indice, datoActualizado);
 			return true;
 		}
 	}
 
 	@Override
-	public boolean filtrar(Object datoABuscar) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean filtrar(Object datoABuscar) { // Case con cada atributo
+		boolean encontrado = false;
+
+		for (Libro libro : listaLibro) {
+			// Si el dato es un String → buscar en autor o título
+			if (datoABuscar instanceof String) {
+				String texto = (String) datoABuscar;
+				if (libro.getAutor().equalsIgnoreCase(texto) || libro.getTitulo().equalsIgnoreCase(texto)) {
+					System.out.println("Encontrado: " + libro);
+					encontrado = true;
+				}
+			}
+			// Si el dato es un Integer → buscar por año
+			else if (datoABuscar instanceof Integer) {
+				int anio = (Integer) datoABuscar;
+				if (libro.getAnio() == anio) {
+					System.out.println("Encontrado: " + libro);
+					encontrado = true;
+				}
+			}
+		}
+
+		return encontrado;
 	}
 
 	@Override
 	public int contar() {
-		// TODO Auto-generated method stub
-		return 0;
+		return listaLibro.size();
 	}
 
 }
