@@ -101,8 +101,6 @@ public class Controlador implements ActionListener {
 		rp.getBtnVolver().addActionListener(this);
 		rp.getBtnVolver().setActionCommand("BOTON_VOLVER");
 
-		rp.getBtnRegistrar().addActionListener(this);
-		rp.getBtnRegistrar().setActionCommand("BOTON_REGISTRAR");
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -167,35 +165,6 @@ public class Controlador implements ActionListener {
 				rp.getLblClave().setVisible(true);
 				rp.getTxtTempo().setVisible(true);
 				rp.getTxtClave().setVisible(true);
-
-		
-			}else if(seleccion.equals("Película")) {
-				rp.getLblDirector().setVisible(true);
-				rp.getLblDuracion().setVisible(true);
-				rp.getTxtDirector().setVisible(true);
-				rp.getTxtDuracion().setVisible(true);
-
-				
-				
-			}else if(seleccion.equals("Revista")) {
-				rp.getLblTematica().setVisible(true);
-				rp.getLblEditorial().setVisible(true);
-				rp.getTxtTematica().setVisible(true);
-				rp.getTxtEditorial().setVisible(true);
-				
-			
-				
-			}else if(seleccion.equals("Tesis")) {
-				rp.getLblTema1().setVisible(true);
-				rp.getTxtTema1().setVisible(true);
-				rp.getlblNumPagina().setVisible(true);
-				rp.getTxtNumPagina().setVisible(true);
-				
-			
-				
-			}else if(seleccion.equals("Trabajo de grado")) {
-				rp.getLblTema2().setVisible(true);
-				rp.getLblCarreraAutor().setVisible(true);
 
 			} else if (seleccion.equals("Película")) {
 				
