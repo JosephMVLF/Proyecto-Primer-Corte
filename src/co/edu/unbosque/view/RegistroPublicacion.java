@@ -7,10 +7,9 @@ public class RegistroPublicacion extends JFrame{
 	
 	    private static final long serialVersionUID = 1L;
 	
-	    private JButton btnEnviar;
 	    private JButton btnVolver;
 	    private JComboBox<String> cbPublicacion;
-	    private JButton btnCrear;
+	    private JButton btnRegistrar;
 	    private JButton btnSalir;
 	    private JLabel lblTitulo;
 	    private JLabel lblNombre;
@@ -22,8 +21,8 @@ public class RegistroPublicacion extends JFrame{
 	    private JLabel lblMensaje;
 	    private JLabel lblGenero;
 	    private JTextField txtGenero;
-	    private JLabel lblPaginas;
-	    private JTextField txtPaginas;
+	    private JLabel lblPagina;
+	    private JTextField txtPagina;
 	    private JLabel lblTema;
 	    private JTextField txtTema;
 	    private JLabel lblRamaDeCiencia;
@@ -133,17 +132,17 @@ public class RegistroPublicacion extends JFrame{
 	        txtGenero.setVisible(false);
 	        this.add(txtGenero);
 
-	        lblPaginas = new JLabel("Páginas:");
-	        lblPaginas.setFont(fontField);
-	        lblPaginas.setBounds(100, 290, 180, 25);
-	        lblPaginas.setVisible(false);
-	        this.add(lblPaginas);
+	        lblPagina = new JLabel("Páginas:");
+	        lblPagina.setFont(fontField);
+	        lblPagina.setBounds(100, 290, 180, 25);
+	        lblPagina.setVisible(false);
+	        this.add(lblPagina);
 
-	        txtPaginas = new JTextField();
-	        txtPaginas.setFont(fontField);
-	        txtPaginas.setBounds(180, 290, 200, 25);
-	        txtPaginas.setVisible(false);
-	        this.add(txtPaginas);
+	        txtPagina = new JTextField();
+	        txtPagina.setFont(fontField);
+	        txtPagina.setBounds(180, 290, 200, 25);
+	        txtPagina.setVisible(false);
+	        this.add(txtPagina);
 	        
 	        lblTema = new JLabel("Tema del artículo:");
 	        lblTema.setFont(fontField);
@@ -289,13 +288,13 @@ public class RegistroPublicacion extends JFrame{
 	        txtCarreraAutor.setVisible(false);
 	        this.add(txtCarreraAutor);
 	        
-	        btnCrear = new JButton("Registrar ");
-	        btnCrear.setFont(fontField);
-	        btnCrear.setBounds(500, 110, 200, 40);
-	        btnCrear.setBackground(new Color(52, 168, 83));
-	        btnCrear.setForeground(Color.WHITE);
-	        btnCrear.setFocusPainted(false);
-	        this.add(btnCrear);
+	        btnRegistrar = new JButton("Registrar ");
+	        btnRegistrar.setFont(fontField);
+	        btnRegistrar.setBounds(500, 110, 200, 40);
+	        btnRegistrar.setBackground(new Color(52, 168, 83));
+	        btnRegistrar.setForeground(Color.WHITE);
+	        btnRegistrar.setFocusPainted(false);
+	        this.add(btnRegistrar);
 
 	        btnVolver = new JButton("Volver");
 	        btnVolver.setFont(fontField);
@@ -309,13 +308,6 @@ public class RegistroPublicacion extends JFrame{
 	        
 	    }
 
-		public JButton getBtnEnviar() {
-			return btnEnviar;
-		}
-
-		public void setBtnEnviar(JButton btnEnviar) {
-			this.btnEnviar = btnEnviar;
-		}
 
 		public JButton getBtnVolver() {
 			return btnVolver;
@@ -325,12 +317,12 @@ public class RegistroPublicacion extends JFrame{
 			this.btnVolver = btnVolver;
 		}
 
-		public JButton getBtnCrear() {
-			return btnCrear;
+		public JButton getBtnRegistrar() {
+			return btnRegistrar;
 		}
 
-		public void setBtnCrear(JButton btnCrear) {
-			this.btnCrear = btnCrear;
+		public void setBtnRegistrar(JButton btnRegistrar) {
+			this.btnRegistrar = btnRegistrar;
 		}
 
 		
@@ -436,20 +428,20 @@ public class RegistroPublicacion extends JFrame{
 			this.txtGenero = txtGenero;
 		}
 
-		public JLabel getLblPaginas() {
-			return lblPaginas;
+		public JLabel getLblPagina() {
+			return lblPagina;
 		}
 
-		public void setLblPaginas(JLabel lblPaginas) {
-			this.lblPaginas = lblPaginas;
+		public void setLblPagina(JLabel lblPagina) {
+			this.lblPagina = lblPagina;
 		}
 
-		public JTextField getTxtPaginas() {
-			return txtPaginas;
+		public JTextField getTxtPagina() {
+			return txtPagina;
 		}
 
-		public void setTxtPaginas(JTextField txtPaginas) {
-			this.txtPaginas = txtPaginas;
+		public void setTxtPagina(JTextField txtPagina) {
+			this.txtPagina = txtPagina;
 		}
 
 		public JLabel getLblTema() {
@@ -651,7 +643,27 @@ public class RegistroPublicacion extends JFrame{
 		public void setTxtTema2(JTextField txtTema2) {
 			this.txtTema2 = txtTema2;
 		}
-
+		
+		public void limpiarCampos() {
+			txtNombre.setText("");
+			txtAutor.setText("");
+			txtAnio.setText("");
+			txtCarreraAutor.setText("");
+			txtClave.setText("");
+			txtDirector.setText("");
+			txtDuracion.setText("");
+			txtEditorial.setText("");
+			txtGenero.setText("");
+			txtNumPagina.setText("");
+			txtPagina.setText("");
+			txtRamaDeCiencia.setText("");
+			txtTema.setText("");
+			txtTema1.setText("");
+			txtTema2.setText("");
+			txtTematica.setText("");
+			txtTempo.setText("");
+			
+		}
 		
 
 		

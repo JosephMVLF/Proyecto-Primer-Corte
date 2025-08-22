@@ -6,29 +6,49 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import co.edu.unbosque.model.ArticuloCientifico;
+import co.edu.unbosque.model.Libro;
+import co.edu.unbosque.model.Partitura;
+import co.edu.unbosque.model.Pelicula;
+import co.edu.unbosque.model.Revista;
+import co.edu.unbosque.model.Tesis;
+import co.edu.unbosque.model.TrabajoDeGrado;
+import co.edu.unbosque.model.persistence.*;
 import co.edu.unbosque.view.Consola;
 import co.edu.unbosque.view.MenuPrincipal;
 import co.edu.unbosque.view.RegistroPublicacion;
 
 
 public class Controlador implements ActionListener{
-
-
-	private Consola con;
+	
 	private MenuPrincipal mp;
 	private RegistroPublicacion rp;
 
-
+	private LibroDAO lbDAO;
+	private ArticuloCientificoDAO atDAO;
+	private PartituraDAO paDAO;
+	private PeliculaDAO peDAO;
+	private RevistaDAO reDAO;
+	private TesisDAO teDAO;
+	private TrabajoDeGradoDAO tdgDAO;
+	
 
 	public Controlador() {
-		con = new Consola();
+
 		mp = new MenuPrincipal();
+		rp= new RegistroPublicacion();
+		
+		lbDAO = new LibroDAO();
+		paDAO = new PartituraDAO();
+		peDAO = new PeliculaDAO();
+		reDAO = new RevistaDAO();
+		teDAO = new TesisDAO();
+		tdgDAO = new TrabajoDeGradoDAO();
 
 	}
 
 	public void runGUI() {
 		mp.setVisible(true);
-		rp= new RegistroPublicacion();
 		rp.setVisible(false);
 
 		agregarOyentes();
@@ -41,6 +61,9 @@ public class Controlador implements ActionListener{
 
 		mp.getBtnCrear().addActionListener(this);
 		mp.getBtnCrear().setActionCommand("BOTON_CREAR");
+		
+		rp.getBtnRegistrar().addActionListener(this);
+		rp.getBtnRegistrar().setActionCommand("BOTON_REGISTRAR");
 
 		mp.getBtnMostrar().addActionListener(this);
 		mp.getBtnMostrar().setActionCommand("BOTON_MOSTRAR");
@@ -63,6 +86,7 @@ public class Controlador implements ActionListener{
 
 		switch (alias) {
 		case "BOTON_CREAR": {
+			rp.limpiarCampos();
 			mp.setVisible(false); 
 			rp.setVisible(true);  
 			break;
@@ -72,9 +96,9 @@ public class Controlador implements ActionListener{
 			String seleccion = (String) rp.getCbPublicacion().getSelectedItem();
 			rp.getLblMensaje().setText("");
 
-			rp.getLblPaginas().setVisible(false);
+			rp.getLblPagina().setVisible(false);
 			rp.getLblGenero().setVisible(false);
-			rp.getTxtPaginas().setVisible(false);
+			rp.getTxtPagina().setVisible(false);
 			rp.getTxtGenero();
 			rp.getLblRamaDeCiencia().setVisible(false);
 			rp.getLblTema().setVisible(false);
@@ -102,9 +126,9 @@ public class Controlador implements ActionListener{
 			rp.getTxtCarreraAutor().setVisible(false);
 
 			if (seleccion.equals("Libro")) {
-				rp.getLblPaginas().setVisible(true);
+				rp.getLblPagina().setVisible(true);
 				rp.getLblGenero().setVisible(true);
-				rp.getTxtPaginas().setVisible(true);
+				rp.getTxtPagina().setVisible(true);
 				rp.getTxtGenero().setVisible(true);
 
 			
@@ -126,44 +150,148 @@ public class Controlador implements ActionListener{
 			
 				
 			}else if(seleccion.equals("Película")) {
-				rp.getLblDirector().setVisible(true);;
-				rp.getLblDuracion().setVisible(true);;
-				rp.getTxtDirector().setVisible(true);;
-				rp.getTxtDuracion().setVisible(true);;
+				rp.getLblDirector().setVisible(true);
+				rp.getLblDuracion().setVisible(true);
+				rp.getTxtDirector().setVisible(true);
+				rp.getTxtDuracion().setVisible(true);
 
 				
 				
 			}else if(seleccion.equals("Revista")) {
-				rp.getLblTematica().setVisible(true);;
-				rp.getLblEditorial().setVisible(true);;
-				rp.getTxtTematica().setVisible(true);;
-				rp.getTxtEditorial().setVisible(true);;
+				rp.getLblTematica().setVisible(true);
+				rp.getLblEditorial().setVisible(true);
+				rp.getTxtTematica().setVisible(true);
+				rp.getTxtEditorial().setVisible(true);
 				
 			
 				
 			}else if(seleccion.equals("Tesis")) {
-				rp.getLblTema1().setVisible(true);;
-				rp.getTxtTema1().setVisible(true);;
-				rp.getlblNumPagina().setVisible(true);;
-				rp.getTxtNumPagina().setVisible(true);;
+				rp.getLblTema1().setVisible(true);
+				rp.getTxtTema1().setVisible(true);
+				rp.getlblNumPagina().setVisible(true);
+				rp.getTxtNumPagina().setVisible(true);
 				
 			
 				
 			}else if(seleccion.equals("Trabajo de grado")) {
-				rp.getLblTema2().setVisible(true);;
-				rp.getLblCarreraAutor().setVisible(true);;
+				rp.getLblTema2().setVisible(true);
+				rp.getLblCarreraAutor().setVisible(true);
 				rp.getTxtTema2().setVisible(true);
-				rp.getTxtCarreraAutor().setVisible(true);;
+				rp.getTxtCarreraAutor().setVisible(true);
 				
 				
 			}
 
-
 			rp.repaint();
 			break;
 		}
+		case "BOTON_REGISTRAR": {
+			String seleccion = (String) rp.getCbPublicacion().getSelectedItem();
+			
+			if(seleccion.equals("Libro")) {
+			
+				String titulo = rp.getTxtNombre().getText();
+				String autor = rp.getTxtAutor().getText();
+				int anio = Integer.parseInt(rp.getTxtAnio().getText());
+				String genero = rp.getTxtGenero().getText();
+				int pagina = Integer.parseInt(rp.getTxtPagina().getText());
+				
+				Libro l1 = new Libro(titulo, autor, anio, genero, pagina);
+				lbDAO.crear(l1);
+				
+				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
+			
+			}else if(seleccion.equals("Artículo Científico")) {
+				
+				String titulo = rp.getTxtNombre().getText();
+				String autor = rp.getTxtAutor().getText();
+				int anio = Integer.parseInt(rp.getTxtAnio().getText());
+				String tema = rp.getTxtTema().getText();
+				String ramaDeCiencia = rp.getTxtRamaDeCiencia().getText();
+				
+				
+				ArticuloCientifico at = new ArticuloCientifico(titulo, autor, anio, tema, ramaDeCiencia);
+				atDAO.crear(at);
+				
+				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
+				
+			}else if(seleccion.equals("Partitura")) {
+				
+				String titulo = rp.getTxtNombre().getText();
+				String autor = rp.getTxtAutor().getText();
+				int anio = Integer.parseInt(rp.getTxtAnio().getText());
+				int tempo = Integer.parseInt(rp.getTxtTempo().getText());
+				String clave = rp.getTxtClave().getText();
+				
+				Partitura pa = new Partitura(titulo, autor, anio, tempo, clave);
+				paDAO.crear(pa);
+				
+				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
+				
+			}else if(seleccion.equals("Película")) {
+				
+				String titulo = rp.getTxtNombre().getText();
+				String autor = rp.getTxtAutor().getText();
+				int anio = Integer.parseInt(rp.getTxtAnio().getText());
+				String director = rp.getTxtDirector().getText();
+				float duracion = Float.parseFloat(rp.getTxtDuracion().getText());
+				
+				Pelicula pe = new Pelicula(titulo, autor, anio, director, duracion);
+				peDAO.crear(pe);
+				
+				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
+				
+			}else if(seleccion.equals("Revista")) {
+				
+				String titulo = rp.getTxtNombre().getText();
+				String autor = rp.getTxtAutor().getText();
+				int anio = Integer.parseInt(rp.getTxtAnio().getText());
+				String tematica = rp.getTxtTematica().getText();
+				String editorial = rp.getTxtEditorial().getText();
+				
+				Revista re = new Revista(titulo, autor, anio, tematica, editorial);
+				reDAO.crear(re);
+				
+				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
+				
+			}else if(seleccion.equals("Tesis")) {
+				
+				String titulo = rp.getTxtNombre().getText();
+				String autor = rp.getTxtAutor().getText();
+				int anio = Integer.parseInt(rp.getTxtAnio().getText());
+				String tema1 = rp.getTxtTema1().getText();
+				int numPagina = Integer.parseInt(rp.getTxtNumPagina().getText());
+				
+				Tesis te = new Tesis(titulo, autor, anio, tema1, numPagina);
+				teDAO.crear(te);
+				
+				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
+				
+			}else if(seleccion.equals("Trabajo de grado")) {
+				
+				String titulo = rp.getTxtNombre().getText();
+				String autor = rp.getTxtAutor().getText();
+				int anio = Integer.parseInt(rp.getTxtAnio().getText());
+				String carreraAutor = rp.getTxtCarreraAutor().getText();
+				String tema2 = rp.getTxtTema2().getText();
+				
+				TrabajoDeGrado tdg = new TrabajoDeGrado(titulo, autor, anio, carreraAutor, tema2);
+				tdgDAO.crear(tdg);
+				
+				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE, null);
+				
+			}
+			
+			
+			
+			rp.setVisible(false);
+			mp.setVisible(true);
+			break;
+		}
+		
 		case "BOTON_SALIR": {
 			System.exit(0);
+			break;
 		}
 		case "BOTON_MOSTRAR": {
 			JOptionPane.showMessageDialog(null, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE, null);

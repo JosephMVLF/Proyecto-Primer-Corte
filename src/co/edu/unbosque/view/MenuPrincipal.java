@@ -28,6 +28,7 @@ public class MenuPrincipal extends JFrame{
 		this.setTitle("Menú Principal");
 		this.setBounds(10, 10, 1200, 900);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setResizable(false);
 		this.setLayout(null);
 		this.getContentPane().setBackground(Color.WHITE);
 		
