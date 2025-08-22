@@ -24,7 +24,7 @@ public class RegistroPublicacion extends JFrame{
 	    private JTextField txtAutor;
 	    private JLabel lblAnio;
 	    private JTextField txtAnio;
-	
+	    private JLabel lblMensaje;
 	
 
 	    public RegistroPublicacion() {
@@ -47,6 +47,24 @@ public class RegistroPublicacion extends JFrame{
 	        lblTitulo.setBounds(70, 20, 500, 30);
 	        lblTitulo.setForeground(new Color(66, 133, 244));
 	        this.add(lblTitulo);
+	        
+	        cbPublicacion = new JComboBox<>(new String[]{"Seleccione...", 
+	        		"Libro", 
+	        		"Artículo Científico", 
+	        		"Partitura", 
+	        		"Película", 
+	        		"Revista", 
+	        		"Tesis", 
+	        		"Trabajo de grado"});
+	        cbPublicacion.setFont(fontField);
+	        cbPublicacion.setBounds(150, 100, 200, 25);
+	        this.add(cbPublicacion);
+	        
+	        lblMensaje = new JLabel("");
+	        lblMensaje.setFont(new Font("Segoe UI", Font.ITALIC, 14));
+	        lblMensaje.setBounds(100, 260, 400, 30);
+	        lblMensaje.setForeground(Color.DARK_GRAY);
+	        this.add(lblMensaje);
 
 	        lblNombre = new JLabel("Título:");
 	        lblNombre.setFont(fontLabel);
@@ -94,10 +112,7 @@ public class RegistroPublicacion extends JFrame{
 	        btnMostrar.setFocusPainted(false);
 	        this.add(btnMostrar);
 	       	        
-	        cbPublicacion = new JComboBox<>(new String[]{"Seleccione...", "Libro", "Artículo Científico", "Partitura", "Película", "Revista", "Tesis", "Trabajo de grado"});
-	        cbPublicacion.setFont(fontField);
-	        cbPublicacion.setBounds(150, 100, 200, 25);
-	        this.add(cbPublicacion);
+	      
 	        
 	        btnVolver = new JButton("Volver");
 	        btnVolver.setFont(new Font("Segoe UI", Font.BOLD, 14));
@@ -225,6 +240,14 @@ public class RegistroPublicacion extends JFrame{
 
 		public void setTxtAnio(JTextField txtAnio) {
 			this.txtAnio = txtAnio;
+		}
+
+		public JLabel getLblMensaje() {
+			return lblMensaje;
+		}
+
+		public void setLblMensaje(JLabel lblMensaje) {
+			this.lblMensaje = lblMensaje;
 		}
 
 		

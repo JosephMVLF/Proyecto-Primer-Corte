@@ -165,7 +165,8 @@ public class Controlador implements ActionListener{
 		mp.getBtnEliminar().addActionListener(this);
 		mp.getBtnEliminar().setActionCommand("BOTON_ELIMINAR");
 		
-		
+		   rp.getCbPublicacion().addActionListener(this);
+		    rp.getCbPublicacion().setActionCommand("COMBO_PUBLICACION");
 		}
 
 	public void actionPerformed(ActionEvent e) {
@@ -178,7 +179,15 @@ public class Controlador implements ActionListener{
 	            break;
 	        }
 	        
-	           
+	        case "COMBO_PUBLICACION": {
+	            String seleccion = (String) rp.getCbPublicacion().getSelectedItem();
+	            if (!seleccion.equals("Seleccione...")) {
+	                rp.getLblMensaje().setText("Has seleccionado: " + seleccion);
+	            } else {
+	                rp.getLblMensaje().setText("");
+	            }
+	            break;
+	        }
 	        
 	        case "BOTON_MOSTRAR": {
 	            JOptionPane.showMessageDialog(null, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE, null);
