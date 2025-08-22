@@ -15,6 +15,7 @@ public class MostrarDatos extends JFrame {
     private JTextArea areaResultado;
     private JComboBox<String> comboTipo;
     private JComboBox<String> comboCriterio;
+    private JLabel lblUeb;
 
     public MostrarDatos() {}
 
@@ -32,6 +33,13 @@ public class MostrarDatos extends JFrame {
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+        
+        JLabel lblUeb = new JLabel("");
+		Icon ueb = new ImageIcon("recursos/logosimbolo-ub.png");
+		lblUeb.setBounds(150, 530, 210, 210);
+		lblUeb.setIcon(ueb);
+		this.add(lblUeb);
+
 
         // Panel de conteo
         int totalGeneral = totalLibros + totalArticulos + totalPartituras + totalPeliculas +
@@ -132,40 +140,89 @@ public class MostrarDatos extends JFrame {
         return new JScrollPane(area);
     }
 
-    // Getters
-    public JFrame getVentanaPrincipal() {
-        return ventanaPrincipal;
-    }
+	public JFrame getVentanaPrincipal() {
+		return ventanaPrincipal;
+	}
 
-    public JTextField getTxtBuscar() {
-        return txtBuscar;
-    }
+	public void setVentanaPrincipal(JFrame ventanaPrincipal) {
+		this.ventanaPrincipal = ventanaPrincipal;
+	}
 
-    public JTextField getTxtEliminar() {
-        return txtEliminar;
-    }
+	public JTextField getTxtBuscar() {
+		return txtBuscar;
+	}
 
-    public JButton getBtnFiltrar() {
-        return btnFiltrar;
-    }
+	public void setTxtBuscar(JTextField txtBuscar) {
+		this.txtBuscar = txtBuscar;
+	}
 
-    public JButton getBtnEliminar() {
-        return btnEliminar;
-    }
+	public JTextField getTxtEliminar() {
+		return txtEliminar;
+	}
 
-    public JButton getBtnCerrar() {
-        return btnCerrar;
-    }
+	public void setTxtEliminar(JTextField txtEliminar) {
+		this.txtEliminar = txtEliminar;
+	}
 
-    public JTextArea getAreaResultado() {
-        return areaResultado;
-    }
+	public JButton getBtnFiltrar() {
+		return btnFiltrar;
+	}
 
-    public JComboBox<String> getComboTipo() {
-        return comboTipo;
-    }
+	public void setBtnFiltrar(JButton btnFiltrar) {
+		this.btnFiltrar = btnFiltrar;
+	}
 
-    public JComboBox<String> getComboCriterio() {
-        return comboCriterio;
-    }
+	public JButton getBtnEliminar() {
+		return btnEliminar;
+	}
+
+	public void setBtnEliminar(JButton btnEliminar) {
+		this.btnEliminar = btnEliminar;
+	}
+
+	public JButton getBtnCerrar() {
+		return btnCerrar;
+	}
+
+	public void setBtnCerrar(JButton btnCerrar) {
+		this.btnCerrar = btnCerrar;
+	}
+
+	public JTextArea getAreaResultado() {
+		return areaResultado;
+	}
+
+	public void setAreaResultado(JTextArea areaResultado) {
+		this.areaResultado = areaResultado;
+	}
+
+	public JComboBox<String> getComboTipo() {
+		return comboTipo;
+	}
+
+	public void setComboTipo(JComboBox<String> comboTipo) {
+		this.comboTipo = comboTipo;
+	}
+
+	public JComboBox<String> getComboCriterio() {
+		return comboCriterio;
+	}
+
+	public void setComboCriterio(JComboBox<String> comboCriterio) {
+		this.comboCriterio = comboCriterio;
+	}
+
+	public JLabel getLblUeb() {
+		return lblUeb;
+	}
+
+	public void setLblUeb(JLabel lblUeb) {
+		this.lblUeb = lblUeb;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+    
+
 }

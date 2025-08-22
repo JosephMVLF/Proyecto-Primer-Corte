@@ -71,11 +71,10 @@ public class Controlador implements ActionListener {
 
 
 
-
-
 	
-
-
+	
+	
+	
 	public void runGUI() {
 		mp.setVisible(true);
 		rp.setVisible(false);
@@ -155,7 +154,7 @@ public class Controlador implements ActionListener {
 			rp.getTxtEditorial().setVisible(false);
 			rp.getLblTema1().setVisible(false);
 			rp.getTxtTema1().setVisible(false);
-			rp.getlblNumPagina().setVisible(false);
+			rp.getLblNumPagina().setVisible(false);
 			rp.getTxtNumPagina().setVisible(false);
 			rp.getLblTema2().setVisible(false);
 			rp.getLblCarreraAutor().setVisible(false);
@@ -198,7 +197,7 @@ public class Controlador implements ActionListener {
 
 				rp.getLblTema1().setVisible(true);
 				rp.getTxtTema1().setVisible(true);
-				rp.getlblNumPagina().setVisible(true);
+				rp.getLblNumPagina().setVisible(true);
 				rp.getTxtNumPagina().setVisible(true);
 
 			} else if (seleccion.equals("Trabajo de grado")) {
