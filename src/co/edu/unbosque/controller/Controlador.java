@@ -1,19 +1,11 @@
 package co.edu.unbosque.controller;
 
 
-
-import co.edu.unbosque.model.Libro;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 import javax.swing.JOptionPane;
 
-
-import co.edu.unbosque.model.TrabajoDeGrado;
-import co.edu.unbosque.model.persistence.LibroDAO;
-import co.edu.unbosque.model.persistence.TrabajoDeGradoDAO;
 import co.edu.unbosque.view.Consola;
 import co.edu.unbosque.view.MenuPrincipal;
 import co.edu.unbosque.view.RegistroPublicacion;
@@ -24,10 +16,7 @@ public class Controlador implements ActionListener{
 
 	private Consola con;
 	private MenuPrincipal mp;
-
 	private RegistroPublicacion rp;
-
-	private LibroDAO obL;
 
 
 
