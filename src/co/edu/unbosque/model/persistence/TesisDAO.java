@@ -70,15 +70,16 @@ public class TesisDAO implements DAO<Tesis> {
 			// Si el dato es un String → buscar en autor o título
 			if (datoABuscar instanceof String) {
 				String texto = (String) datoABuscar;
-				if (tesis.getAutor().equalsIgnoreCase(texto) || tesis.getTitulo().equalsIgnoreCase(texto)) {
+				if (tesis.getAutor().equalsIgnoreCase(texto) || tesis.getTitulo().equalsIgnoreCase(texto)
+					|| tesis.getTema1().equalsIgnoreCase(texto)) {
 				
 					encontrado += tesis;
 				}
 			}
 			// Si el dato es un Integer → buscar por año
 			else if (datoABuscar instanceof Integer) {
-				int anio = (Integer) datoABuscar;
-				if (tesis.getAnio() == anio) {
+				int num = (Integer) datoABuscar;
+				if (tesis.getAnio() == num || tesis.getNumPagina() == num) {
 					
 					encontrado += tesis;
 				}

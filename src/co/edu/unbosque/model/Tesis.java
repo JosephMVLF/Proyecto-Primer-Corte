@@ -46,7 +46,4 @@ public class Tesis extends Publicacion{
 	public String toString() {
 		return super.toString() +  "\nTema: " + tema1 + "\nNúmero de paginas: " + numPagina ;
 	}
-
-
-	
 }

@@ -54,15 +54,16 @@ public class PeliculaDAO implements DAO<Pelicula> {
 	}
 
 	@Override
-	public String filtrar(Object datoABuscar) { // Case con cada atributo
+	public String filtrar(Object datoABuscar) {
 		String encontrado = "";
 
 		for (Pelicula pelicula : listaPelicula) {
 			// Si el dato es un String → buscar en autor o título
 			if (datoABuscar instanceof String) {
 				String texto = (String) datoABuscar;
-				if (pelicula.getAutor().equalsIgnoreCase(texto) || pelicula.getTitulo().equalsIgnoreCase(texto)) {
-					System.out.println("Encontrado: " + pelicula);
+				if (pelicula.getAutor().equalsIgnoreCase(texto) || pelicula.getTitulo().equalsIgnoreCase(texto)
+					|| pelicula.getDirector().equalsIgnoreCase(texto)) {
+					
 					encontrado += pelicula;
 				}
 			}
@@ -70,10 +71,18 @@ public class PeliculaDAO implements DAO<Pelicula> {
 			else if (datoABuscar instanceof Integer) {
 				int anio = (Integer) datoABuscar;
 				if (pelicula.getAnio() == anio) {
-					System.out.println("Encontrado: " + pelicula);
+					
 					encontrado += pelicula;
 				}
 			}
+			else if (datoABuscar instanceof Float) {
+				float duracion  = (Float) datoABuscar;
+				if (pelicula.getDuracion() == duracion) {
+					
+					encontrado += pelicula;
+				}
+			}
+			
 		}
 
 		return encontrado;

@@ -64,14 +64,15 @@ public class ArticuloCientificoDAO implements DAO<ArticuloCientifico> {
 	}
 
 	@Override
-	public String filtrar(Object datoABuscar) { // Case con cada atributo
+	public String filtrar(Object datoABuscar) {
 		String encontrado="";
 
 		for (ArticuloCientifico articulo : listaArticulos) {
 			// Si el dato es un String → buscar en autor o título
 			if (datoABuscar instanceof String) {
 				String texto = (String) datoABuscar;
-				if (articulo.getAutor().equalsIgnoreCase(texto) || articulo.getTitulo().equalsIgnoreCase(texto)) {
+				if (articulo.getAutor().equalsIgnoreCase(texto) || articulo.getTitulo().equalsIgnoreCase(texto)
+					|| articulo.getTema().equalsIgnoreCase(texto) || articulo.getRamaDeCiencia().equalsIgnoreCase(texto)) {
 					
 					encontrado += articulo;
 				}

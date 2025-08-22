@@ -20,13 +20,13 @@ import co.edu.unbosque.model.persistence.RevistaDAO;
 import co.edu.unbosque.model.persistence.TesisDAO;
 import co.edu.unbosque.model.persistence.TrabajoDeGradoDAO;
 import co.edu.unbosque.view.Consola;
+
 import co.edu.unbosque.view.MenuPrincipal;
 import co.edu.unbosque.view.MostrarDatos;
 import co.edu.unbosque.view.RegistroPublicacion;
 
 public class Controlador implements ActionListener {
 
-	private Consola con;
 	private MenuPrincipal mp;
 	private RegistroPublicacion rp;
 
@@ -38,8 +38,16 @@ public class Controlador implements ActionListener {
 	private TesisDAO tesisDAO;
 	private TrabajoDeGradoDAO trabajoDAO;
 
+	private ArticuloCientificoDAO articuloCientificoDao;
+	private LibroDAO libroDao;
+	private PartituraDAO partituraDao;
+	private PeliculaDAO peliculaDao;
+	private RevistaDAO revistaDao;
+	private TesisDAO tesisDao;
+	private TrabajoDeGradoDAO trabajoDeGradoDao;
+
 	public Controlador() {
-		con = new Consola();
+
 		mp = new MenuPrincipal();
 
 		libroDAO = new LibroDAO();
@@ -56,38 +64,15 @@ public class Controlador implements ActionListener {
 		mp.setVisible(true);
 		rp = new RegistroPublicacion();
 		rp.setVisible(false);
-		ArticuloCientifico articulo = new ArticuloCientifico("Inteligencia Artificial en Medicina", "Dr. Smith", 2023,
-				"IA Médica", "Ciencias de la Computación");
-		articuloDAO.crear(articulo);
-		Libro libro = new Libro("Don Quijote", "Cervantes", 1605, "Novela", 863);
-		libroDAO.crear(libro);
-		libroDAO.crear(libro);
-		libroDAO.crear(libro);
-		libroDAO.crear(libro);
-		libroDAO.crear(libro);
-		libroDAO.crear(libro);
-		
-	    Partitura partitura = new Partitura("Sonata para Piano", "Mozart", 1784, 120, "SOL");
-        partituraDAO.crear(partitura);
-        
-        Pelicula pelicula = new Pelicula("El Padrino", "Mario Puzo", 1972, "Francis Ford Coppola", 175.0f);
-        peliculaDAO.crear(pelicula);
 
-        Revista revista = new Revista("National Geographic", "Varios Autores", 2023, "Naturaleza", "Nat Geo");
-        revistaDAO.crear(revista);
 
-        Tesis tesis = new Tesis("Machine Learning en Robótica", "Ana García", 2023, "Inteligencia Artificial", 222);
-        tesisDAO.crear(tesis);
-        TrabajoDeGrado trabajo = new TrabajoDeGrado(
-                "Sistema de Gestión Universitaria", 
-                "Natalia Diaz", 2023, 
-                "Ingeniería de Sistemas", 
-                "Desarrollo de Software"
-            );
-            trabajoDAO.crear(trabajo);
-
-		
-
+		articuloCientificoDao = new ArticuloCientificoDAO();
+		libroDao = new LibroDAO();
+		partituraDao = new PartituraDAO();
+		peliculaDao = new PeliculaDAO();
+		revistaDao = new RevistaDAO();
+		tesisDao = new TesisDAO();
+		trabajoDeGradoDao = new TrabajoDeGradoDAO();
 		agregarOyentes();
 
 	}
@@ -111,6 +96,12 @@ public class Controlador implements ActionListener {
 
 		mp.getBtnSalir().addActionListener(this);
 		mp.getBtnSalir().setActionCommand("BOTON_SALIR");
+
+		rp.getBtnVolver().addActionListener(this);
+		rp.getBtnVolver().setActionCommand("BOTON_VOLVER");
+
+		rp.getBtnRegistrar().addActionListener(this);
+		rp.getBtnRegistrar().setActionCommand("BOTON_REGISTRAR");
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -218,11 +209,21 @@ public class Controlador implements ActionListener {
 			rp.repaint();
 			break;
 		}
+
+		case "BOTON_VOLVER": {
+			mp.setVisible(true);
+			rp.setVisible(false);
+			break;
+		}
 		case "BOTON_SALIR": {
 			System.exit(0);
 		}
+
 		case "BOTON_MOSTRAR":
+		    mp.setVisible(false); // Ocultarla
+
 		    new MostrarDatos(
+		        mp,
 		        libroDAO.mostrar(), articuloDAO.mostrar(),
 		        partituraDAO.mostrar(), peliculaDAO.mostrar(),
 		        revistaDAO.mostrar(), tesisDAO.mostrar(),
@@ -232,10 +233,7 @@ public class Controlador implements ActionListener {
 		        revistaDAO.contar(), tesisDAO.contar(),
 		        trabajoDAO.contar()
 		    );
-		    
-		    mp.setVisible(false);
 		    break;
-
 
 
 		case "BOTON_ACTUALIZAR": {
@@ -249,4 +247,5 @@ public class Controlador implements ActionListener {
 		}
 
 	}
+
 }
