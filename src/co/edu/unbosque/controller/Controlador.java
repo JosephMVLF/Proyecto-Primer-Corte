@@ -38,13 +38,7 @@ public class Controlador implements ActionListener {
 	private TesisDAO tesisDAO;
 	private TrabajoDeGradoDAO trabajoDAO;
 
-	private ArticuloCientificoDAO articuloCientificoDao;
-	private LibroDAO libroDao;
-	private PartituraDAO partituraDao;
-	private PeliculaDAO peliculaDao;
-	private RevistaDAO revistaDao;
-	private TesisDAO tesisDao;
-	private TrabajoDeGradoDAO trabajoDeGradoDao;
+
 
 	public Controlador() {
 
@@ -66,13 +60,13 @@ public class Controlador implements ActionListener {
 		rp.setVisible(false);
 
 
-		articuloCientificoDao = new ArticuloCientificoDAO();
-		libroDao = new LibroDAO();
-		partituraDao = new PartituraDAO();
-		peliculaDao = new PeliculaDAO();
-		revistaDao = new RevistaDAO();
-		tesisDao = new TesisDAO();
-		trabajoDeGradoDao = new TrabajoDeGradoDAO();
+		articuloDAO = new ArticuloCientificoDAO();
+		libroDAO = new LibroDAO();
+		partituraDAO = new PartituraDAO();
+		peliculaDAO = new PeliculaDAO();
+		revistaDAO = new RevistaDAO();
+		tesisDAO = new TesisDAO();
+		trabajoDAO = new TrabajoDeGradoDAO();
 		agregarOyentes();
 
 	}
@@ -220,7 +214,7 @@ public class Controlador implements ActionListener {
 		}
 
 		case "BOTON_MOSTRAR":
-		    mp.setVisible(false); // Ocultarla
+		    mp.setVisible(false); 
 
 		    new MostrarDatos(
 		        mp,
