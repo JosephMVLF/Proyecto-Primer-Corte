@@ -6,21 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 
-import co.edu.unbosque.model.persistence.ArticuloCientificoDAO;
-import co.edu.unbosque.model.persistence.LibroDAO;
-import co.edu.unbosque.model.persistence.PartituraDAO;
-import co.edu.unbosque.model.persistence.PeliculaDAO;
-import co.edu.unbosque.model.persistence.RevistaDAO;
-import co.edu.unbosque.model.persistence.TesisDAO;
-import co.edu.unbosque.model.persistence.TrabajoDeGradoDAO;
-
-
 import co.edu.unbosque.model.*;
-
 import co.edu.unbosque.model.persistence.*;
-
-import co.edu.unbosque.view.Consola;
-
 
 import co.edu.unbosque.view.MenuPrincipal;
 import co.edu.unbosque.view.MostrarDatos;
@@ -50,6 +37,7 @@ public class Controlador implements ActionListener {
 		md = new MostrarDatos();
 
 		libroDAO = new LibroDAO();
+		articuloDAO = new ArticuloCientificoDAO();
 		partituraDAO = new PartituraDAO();
 		peliculaDAO = new PeliculaDAO();
 		revistaDAO = new RevistaDAO();
@@ -167,6 +155,7 @@ public class Controlador implements ActionListener {
 				rp.getTxtTempo().setVisible(true);
 				rp.getTxtClave().setVisible(true);
 
+				
 			} else if (seleccion.equals("Película")) {
 				
 				rp.getLblDirector().setVisible(true);
@@ -197,8 +186,7 @@ public class Controlador implements ActionListener {
 				rp.getTxtTema2().setVisible(true);
 				rp.getTxtCarreraAutor().setVisible(true);
 			}
-
-
+			
 			rp.repaint();
 			break;
 		}
@@ -217,7 +205,7 @@ public class Controlador implements ActionListener {
 				Libro l1 = new Libro(titulo, autor, anio, genero, pagina);
 				libroDAO.crear(l1);
 				
-				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
+				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE, null);
 			
 			}else if(seleccion.equals("Artículo Científico")) {
 				

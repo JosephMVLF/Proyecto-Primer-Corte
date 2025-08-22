@@ -24,8 +24,14 @@ public class MostrarDatos extends JFrame {
         this.ventanaPrincipal = ventanaPrincipal;
 
         setTitle("Resumen de Publicaciones");
+
         setExtendedState(JFrame.MAXIMIZED_BOTH); 
+
+        setSize(800, 600);
+
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         setLayout(new BorderLayout());
 
        
