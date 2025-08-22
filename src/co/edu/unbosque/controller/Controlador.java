@@ -6,7 +6,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import co.edu.unbosque.view.Consola;
+import co.edu.unbosque.model.persistence.ArticuloCientificoDAO;
+import co.edu.unbosque.model.persistence.LibroDAO;
+import co.edu.unbosque.model.persistence.PartituraDAO;
+import co.edu.unbosque.model.persistence.PeliculaDAO;
+import co.edu.unbosque.model.persistence.RevistaDAO;
+import co.edu.unbosque.model.persistence.TesisDAO;
+import co.edu.unbosque.model.persistence.TrabajoDeGradoDAO;
 import co.edu.unbosque.view.MenuPrincipal;
 import co.edu.unbosque.view.RegistroPublicacion;
 
@@ -14,14 +20,20 @@ import co.edu.unbosque.view.RegistroPublicacion;
 public class Controlador implements ActionListener{
 
 
-	private Consola con;
+	
 	private MenuPrincipal mp;
 	private RegistroPublicacion rp;
-
+	private ArticuloCientificoDAO articuloCientificoDao;
+	private LibroDAO libroDao;
+	private PartituraDAO partituraDao;
+	private PeliculaDAO peliculaDao;
+	private RevistaDAO revistaDao;
+	private TesisDAO tesisDao;
+	private TrabajoDeGradoDAO trabajoDeGradoDao;
 
 
 	public Controlador() {
-		con = new Consola();
+	
 		mp = new MenuPrincipal();
 
 	}
@@ -30,7 +42,13 @@ public class Controlador implements ActionListener{
 		mp.setVisible(true);
 		rp= new RegistroPublicacion();
 		rp.setVisible(false);
-
+		articuloCientificoDao = new ArticuloCientificoDAO();
+		libroDao = new LibroDAO();
+		partituraDao = new PartituraDAO();
+		peliculaDao = new PeliculaDAO();
+		revistaDao = new RevistaDAO();
+		tesisDao = new TesisDAO();
+		trabajoDeGradoDao = new TrabajoDeGradoDAO();
 		agregarOyentes();
 
 	}
@@ -56,6 +74,12 @@ public class Controlador implements ActionListener{
 
 		mp.getBtnSalir().addActionListener(this);
 		mp.getBtnSalir().setActionCommand("BOTON_SALIR");
+		
+		rp.getBtnVolver().addActionListener(this);
+		rp.getBtnVolver().setActionCommand("BOTON_VOLVER");
+		
+		rp.getBtnRegistrar().addActionListener(this);
+		rp.getBtnRegistrar().setActionCommand("BOTON_REGISTRAR");
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -162,11 +186,27 @@ public class Controlador implements ActionListener{
 			rp.repaint();
 			break;
 		}
+		
+		case "BOTON_VOLVER": {
+			mp.setVisible(true); 
+			rp.setVisible(false);  
+			break;
+		}
 		case "BOTON_SALIR": {
 			System.exit(0);
 		}
 		case "BOTON_MOSTRAR": {
-			JOptionPane.showMessageDialog(null, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE, null);
+			if(articuloCientificoDao.getListaArticulos().isEmpty()) {
+				JOptionPane.showMessageDialog(mp, "No hay artículos científicos registrados.");
+			}else if(libroDao.getListaLibro().isEmpty()) {
+				JOptionPane.showMessageDialog(mp, "No hay libros registrados.");
+			}else if(partituraDao.getListaPartitura().isEmpty()) {
+				JOptionPane.showMessageDialog(mp, "No hay partituras registradas.");
+			}else if(peliculaDao.getListaPelicula().isEmpty()) {
+				JOptionPane.showMessageDialog(mp, "No hay peliculas registradas.");
+			}else if(revistaDao.getListaRevista().isEmpty()) {
+				JOptionPane.showMessageDialog(mp, "No hay revistas registradas.");
+			}
 			break;
 		}
 		case "BOTON_ACTUALIZAR": {
