@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import co.edu.unbosque.model.Revista;
 import co.edu.unbosque.model.Revista;
+import co.edu.unbosque.model.Revista;
 
 
 public class RevistaDAO implements DAO<Revista>{
@@ -85,6 +86,15 @@ public class RevistaDAO implements DAO<Revista>{
 	@Override
 	public int contar() {
 		return listaRevista.size();
+	}
+	@Override
+	public String[] getTitulos() {
+		String[] titulos = new String[listaRevista.size()];
+		for (int i = 0; i < listaRevista.size(); i++) {
+			Revista p = listaRevista.get(i);
+			titulos[i] = i + " - " + p.getTitulo();
+		}
+		return titulos;
 	}
 	
 	

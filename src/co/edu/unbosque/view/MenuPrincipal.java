@@ -59,10 +59,7 @@ public class MenuPrincipal extends JFrame{
 		add(btnCrear);
 		
 		
-		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		btnEliminar.setBounds(100, 600, 100, 50);
-		add(btnEliminar);
+
 
 		btnMostrar = new JButton("Mostrar");
 		btnMostrar.setFont(new Font("Segoe UI", Font.PLAIN, 18));

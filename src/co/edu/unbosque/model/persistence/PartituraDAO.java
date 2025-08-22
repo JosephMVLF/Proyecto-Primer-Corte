@@ -90,4 +90,14 @@ public class PartituraDAO implements DAO<Partitura> {
 		return listaPartitura.size();
 	}
 
+	@Override
+	public String[] getTitulos() {
+		String[] titulos = new String[listaPartitura.size()];
+		for (int i = 0; i < listaPartitura.size(); i++) {
+			Partitura p = listaPartitura.get(i);
+			titulos[i] = i + " - " + p.getTitulo(); 
+		}
+		return titulos;
+	}
+
 }

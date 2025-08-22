@@ -2,7 +2,7 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
-
+import co.edu.unbosque.model.TrabajoDeGrado;
 import co.edu.unbosque.model.TrabajoDeGrado;
 
 public class TrabajoDeGradoDAO implements DAO<TrabajoDeGrado> {
@@ -66,26 +66,39 @@ public class TrabajoDeGradoDAO implements DAO<TrabajoDeGrado> {
 
 	@Override
 	public String filtrar(String campo, Object valor) {
-	    StringBuilder resultado = new StringBuilder();
-	    for (TrabajoDeGrado l : listaTrabajoDeGrado) {
-	        switch (campo) {
-            case "Título":
-                if (l.getTitulo().equalsIgnoreCase(valor.toString())) resultado.append(l.toString()).append("\n");
-                break;
-            case "Autor":
-                if (l.getAutor().equalsIgnoreCase(valor.toString())) resultado.append(l.toString()).append("\n");
-                break;
-            case "Año":
-                if (valor instanceof Integer && l.getAnio() == (int) valor) resultado.append(l.toString()).append("\n");
-                break;
-	        }
-	    }
-	    return resultado.toString();
+		StringBuilder resultado = new StringBuilder();
+		for (TrabajoDeGrado l : listaTrabajoDeGrado) {
+			switch (campo) {
+			case "Título":
+				if (l.getTitulo().equalsIgnoreCase(valor.toString()))
+					resultado.append(l.toString()).append("\n");
+				break;
+			case "Autor":
+				if (l.getAutor().equalsIgnoreCase(valor.toString()))
+					resultado.append(l.toString()).append("\n");
+				break;
+			case "Año":
+				if (valor instanceof Integer && l.getAnio() == (int) valor)
+					resultado.append(l.toString()).append("\n");
+				break;
+			}
+		}
+		return resultado.toString();
 	}
 
 	@Override
 	public int contar() {
 		return listaTrabajoDeGrado.size();
+	}
+
+	@Override
+	public String[] getTitulos() {
+		String[] titulos = new String[listaTrabajoDeGrado.size()];
+		for (int i = 0; i < listaTrabajoDeGrado.size(); i++) {
+			TrabajoDeGrado p = listaTrabajoDeGrado.get(i);
+			titulos[i] = i + " - " + p.getTitulo();
+		}
+		return titulos;
 	}
 
 }

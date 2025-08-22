@@ -2,13 +2,15 @@ package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-
 
 import co.edu.unbosque.model.*;
 import co.edu.unbosque.model.persistence.*;
-
 import co.edu.unbosque.view.MenuPrincipal;
 import co.edu.unbosque.view.MostrarDatos;
 import co.edu.unbosque.view.RegistroPublicacion;
@@ -17,7 +19,8 @@ public class Controlador implements ActionListener {
 
 	private MenuPrincipal mp;
 	private RegistroPublicacion rp;
-    private MostrarDatos md;
+	private MostrarDatos md;
+
 	private LibroDAO libroDAO;
 	private ArticuloCientificoDAO articuloDAO;
 	private PartituraDAO partituraDAO;
@@ -25,10 +28,6 @@ public class Controlador implements ActionListener {
 	private RevistaDAO revistaDAO;
 	private TesisDAO tesisDAO;
 	private TrabajoDeGradoDAO trabajoDAO;
-
-
-
-
 
 	public Controlador() {
 
@@ -45,12 +44,41 @@ public class Controlador implements ActionListener {
 		trabajoDAO = new TrabajoDeGradoDAO();
 
 	}
+	public boolean eliminarPorTitulo(String titulo) {
+	    String tituloNormalizado = titulo.trim().toLowerCase();
+
+	    if (eliminarEnLista(libroDAO.getListaLibro(), tituloNormalizado)) return true;
+	    if (eliminarEnLista(articuloDAO.getListaArticulos(), tituloNormalizado)) return true;
+	    if (eliminarEnLista(partituraDAO.getListaPartitura(), tituloNormalizado)) return true;
+	    if (eliminarEnLista(peliculaDAO.getListaPelicula(), tituloNormalizado)) return true;
+	    if (eliminarEnLista(revistaDAO.getListaRevista(), tituloNormalizado)) return true;
+	    if (eliminarEnLista(tesisDAO.getListaTesis(), tituloNormalizado)) return true;
+	    if (eliminarEnLista(trabajoDAO.getListaTrabajoDeGrado(), tituloNormalizado)) return true;
+
+	    return false;
+	}
+	private <T extends Publicacion> boolean eliminarEnLista(List<T> lista, String tituloNormalizado) {
+	    for (int i = 0; i < lista.size(); i++) {
+	        if (lista.get(i).getTitulo().trim().toLowerCase().equals(tituloNormalizado)) {
+	            lista.remove(i);
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+
+
+
+
+
+
+
+	
+
 
 	public void runGUI() {
 		mp.setVisible(true);
 		rp.setVisible(false);
-
-
 
 		articuloDAO = new ArticuloCientificoDAO();
 		libroDAO = new LibroDAO();
@@ -78,9 +106,6 @@ public class Controlador implements ActionListener {
 		mp.getBtnActualizar().addActionListener(this);
 		mp.getBtnActualizar().setActionCommand("BOTON_ACTUALIZAR");
 
-		mp.getBtnEliminar().addActionListener(this);
-		mp.getBtnEliminar().setActionCommand("BOTON_ELIMINAR");
-
 		rp.getCbPublicacion().addActionListener(this);
 		rp.getCbPublicacion().setActionCommand("COMBO_PUBLICACION");
 
@@ -98,8 +123,8 @@ public class Controlador implements ActionListener {
 		switch (alias) {
 		case "BOTON_CREAR": {
 			rp.limpiarCampos();
-			mp.setVisible(false); 
-			rp.setVisible(true);  
+			mp.setVisible(false);
+			rp.setVisible(true);
 
 			break;
 		}
@@ -155,144 +180,146 @@ public class Controlador implements ActionListener {
 				rp.getTxtTempo().setVisible(true);
 				rp.getTxtClave().setVisible(true);
 
-				
 			} else if (seleccion.equals("Película")) {
-				
+
 				rp.getLblDirector().setVisible(true);
 				rp.getLblDuracion().setVisible(true);
 				rp.getTxtDirector().setVisible(true);
 				rp.getTxtDuracion().setVisible(true);
-				
 
 			} else if (seleccion.equals("Revista")) {
-				
+
 				rp.getLblTematica().setVisible(true);
 				rp.getLblEditorial().setVisible(true);
 				rp.getTxtTematica().setVisible(true);
 				rp.getTxtEditorial().setVisible(true);
 
-
 			} else if (seleccion.equals("Tesis")) {
-				
+
 				rp.getLblTema1().setVisible(true);
 				rp.getTxtTema1().setVisible(true);
 				rp.getlblNumPagina().setVisible(true);
 				rp.getTxtNumPagina().setVisible(true);
 
 			} else if (seleccion.equals("Trabajo de grado")) {
-				
+
 				rp.getLblTema2().setVisible(true);
 				rp.getLblCarreraAutor().setVisible(true);
 				rp.getTxtTema2().setVisible(true);
 				rp.getTxtCarreraAutor().setVisible(true);
 			}
-			
+
 			rp.repaint();
 			break;
 		}
 
 		case "BOTON_REGISTRAR": {
 			String seleccion = (String) rp.getCbPublicacion().getSelectedItem();
-			
-			if(seleccion.equals("Libro")) {
-			
+
+			if (seleccion.equals("Libro")) {
+
 				String titulo = rp.getTxtNombre().getText();
 				String autor = rp.getTxtAutor().getText();
 				int anio = Integer.parseInt(rp.getTxtAnio().getText());
 				String genero = rp.getTxtGenero().getText();
 				int pagina = Integer.parseInt(rp.getTxtPagina().getText());
-				
+
 				Libro l1 = new Libro(titulo, autor, anio, genero, pagina);
 				libroDAO.crear(l1);
-				
-				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE, null);
-			
-			}else if(seleccion.equals("Artículo Científico")) {
-				
+
+				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro",
+						JOptionPane.INFORMATION_MESSAGE, null);
+
+			} else if (seleccion.equals("Artículo Científico")) {
+
 				String titulo = rp.getTxtNombre().getText();
 				String autor = rp.getTxtAutor().getText();
 				int anio = Integer.parseInt(rp.getTxtAnio().getText());
 				String tema = rp.getTxtTema().getText();
 				String ramaDeCiencia = rp.getTxtRamaDeCiencia().getText();
-				
-				
+
 				ArticuloCientifico at = new ArticuloCientifico(titulo, autor, anio, tema, ramaDeCiencia);
 				articuloDAO.crear(at);
-				
-				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
-				
-			}else if(seleccion.equals("Partitura")) {
-				
+
+				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro",
+						JOptionPane.INFORMATION_MESSAGE, null);
+
+			} else if (seleccion.equals("Partitura")) {
+
 				String titulo = rp.getTxtNombre().getText();
 				String autor = rp.getTxtAutor().getText();
 				int anio = Integer.parseInt(rp.getTxtAnio().getText());
 				int tempo = Integer.parseInt(rp.getTxtTempo().getText());
 				String clave = rp.getTxtClave().getText();
-				
+
 				Partitura pa = new Partitura(titulo, autor, anio, tempo, clave);
 				partituraDAO.crear(pa);
-				
-				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
-				
-			}else if(seleccion.equals("Película")) {
-				
+
+				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro",
+						JOptionPane.INFORMATION_MESSAGE, null);
+
+			} else if (seleccion.equals("Película")) {
+
 				String titulo = rp.getTxtNombre().getText();
 				String autor = rp.getTxtAutor().getText();
 				int anio = Integer.parseInt(rp.getTxtAnio().getText());
 				String director = rp.getTxtDirector().getText();
 				float duracion = Float.parseFloat(rp.getTxtDuracion().getText());
-				
+
 				Pelicula pe = new Pelicula(titulo, autor, anio, director, duracion);
 				peliculaDAO.crear(pe);
-				
-				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
-				
-			}else if(seleccion.equals("Revista")) {
-				
+
+				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro",
+						JOptionPane.INFORMATION_MESSAGE, null);
+
+			} else if (seleccion.equals("Revista")) {
+
 				String titulo = rp.getTxtNombre().getText();
 				String autor = rp.getTxtAutor().getText();
 				int anio = Integer.parseInt(rp.getTxtAnio().getText());
 				String tematica = rp.getTxtTematica().getText();
 				String editorial = rp.getTxtEditorial().getText();
-				
+
 				Revista re = new Revista(titulo, autor, anio, tematica, editorial);
 				revistaDAO.crear(re);
-				
-				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
-				
-			}else if(seleccion.equals("Tesis")) {
-				
+
+				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro",
+						JOptionPane.INFORMATION_MESSAGE, null);
+
+			} else if (seleccion.equals("Tesis")) {
+
 				String titulo = rp.getTxtNombre().getText();
 				String autor = rp.getTxtAutor().getText();
 				int anio = Integer.parseInt(rp.getTxtAnio().getText());
 				String tema1 = rp.getTxtTema1().getText();
 				int numPagina = Integer.parseInt(rp.getTxtNumPagina().getText());
-				
+
 				Tesis te = new Tesis(titulo, autor, anio, tema1, numPagina);
 				tesisDAO.crear(te);
-				
-				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
-				
-			}else if(seleccion.equals("Trabajo de grado")) {
-				
+
+				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro",
+						JOptionPane.INFORMATION_MESSAGE, null);
+
+			} else if (seleccion.equals("Trabajo de grado")) {
+
 				String titulo = rp.getTxtNombre().getText();
 				String autor = rp.getTxtAutor().getText();
 				int anio = Integer.parseInt(rp.getTxtAnio().getText());
 				String carreraAutor = rp.getTxtCarreraAutor().getText();
 				String tema2 = rp.getTxtTema2().getText();
-				
+
 				TrabajoDeGrado tdg = new TrabajoDeGrado(titulo, autor, anio, carreraAutor, tema2);
 				trabajoDAO.crear(tdg);
-				
-				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE, null);
-				
+
+				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro",
+						JOptionPane.INFORMATION_MESSAGE, null);
+
 			}
-				
+
 			rp.setVisible(false);
 			mp.setVisible(true);
 			break;
 		}
-		
 
 		case "BOTON_VOLVER": {
 			mp.setVisible(true);
@@ -306,28 +333,23 @@ public class Controlador implements ActionListener {
 		}
 
 		case "BOTON_MOSTRAR":
-		    mp.setVisible(false); 
+		    mp.setVisible(false);
 
-		    MostrarDatos md = new MostrarDatos(
-		        mp,
-		        libroDAO.mostrar(), articuloDAO.mostrar(),
-		        partituraDAO.mostrar(), peliculaDAO.mostrar(),
-		        revistaDAO.mostrar(), tesisDAO.mostrar(),
-		        trabajoDAO.mostrar(),
-		        libroDAO.contar(), articuloDAO.contar(),
-		        partituraDAO.contar(), peliculaDAO.contar(),
-		        revistaDAO.contar(), tesisDAO.contar(),
-		        trabajoDAO.contar()
-		    );
+		    MostrarDatos md = new MostrarDatos(mp, libroDAO.mostrar(), articuloDAO.mostrar(), partituraDAO.mostrar(),
+		            peliculaDAO.mostrar(), revistaDAO.mostrar(), tesisDAO.mostrar(), trabajoDAO.mostrar(),
+		            libroDAO.contar(), articuloDAO.contar(), partituraDAO.contar(), peliculaDAO.contar(),
+		            revistaDAO.contar(), tesisDAO.contar(), trabajoDAO.contar());
 
+		    // FILTRAR
 		    md.getBtnFiltrar().addActionListener(f -> {
 		        String texto = md.getTxtBuscar().getText().trim();
 		        String tipo = md.getComboTipo().getSelectedItem().toString();
-		        String campo = md.getComboCriterio().getSelectedItem().toString(); 
+		        String campo = md.getComboCriterio().getSelectedItem().toString();
 		        String resultado = "";
 
 		        if (texto.isEmpty()) {
-		            JOptionPane.showMessageDialog(null, "Por favor ingresa un valor para filtrar.", "Filtro vacío", JOptionPane.WARNING_MESSAGE);
+		            JOptionPane.showMessageDialog(null, "Por favor ingresa un valor para filtrar.", "Filtro vacío",
+		                    JOptionPane.WARNING_MESSAGE);
 		            return;
 		        }
 
@@ -339,37 +361,37 @@ public class Controlador implements ActionListener {
 		        }
 
 		        switch (tipo) {
-		            case "Libros":
-		                resultado = "Libros:\n" + libroDAO.filtrar(campo, valor);
-		                break;
-		            case "Artículos":
-		                resultado = "Artículos:\n" + articuloDAO.filtrar(campo, valor);
-		                break;
-		            case "Partituras":
-		                resultado = "Partituras:\n" + partituraDAO.filtrar(campo, valor);
-		                break;
-		            case "Películas":
-		                resultado = "Películas:\n" + peliculaDAO.filtrar(campo, valor);
-		                break;
-		            case "Revistas":
-		                resultado = "Revistas:\n" + revistaDAO.filtrar(campo, valor);
-		                break;
-		            case "Tesis":
-		                resultado = "Tesis:\n" + tesisDAO.filtrar(campo, valor);
-		                break;
-		            case "Trabajos":
-		                resultado = "Trabajos de Grado:\n" + trabajoDAO.filtrar(campo, valor);
-		                break;
-		            case "Todos":
-		            default:
-		                resultado += "Libros:\n" + libroDAO.filtrar(campo, valor) + "\n-------------------------------\n";
-		                resultado += "Artículos:\n" + articuloDAO.filtrar(campo, valor) + "\n-------------------------------\n";
-		                resultado += "Partituras:\n" + partituraDAO.filtrar(campo, valor) + "\n-------------------------------\n";
-		                resultado += "Películas:\n" + peliculaDAO.filtrar(campo, valor) + "\n-------------------------------\n";
-		                resultado += "Revistas:\n" + revistaDAO.filtrar(campo, valor) + "\n-------------------------------\n";
-		                resultado += "Tesis:\n" + tesisDAO.filtrar(campo, valor) + "\n-------------------------------\n";
-		                resultado += "Trabajos de Grado:\n" + trabajoDAO.filtrar(campo, valor) + "\n-------------------------------\n";
-		                break;
+		        case "Libros":
+		            resultado = "Libros:\n" + libroDAO.filtrar(campo, valor);
+		            break;
+		        case "Artículos":
+		            resultado = "Artículos:\n" + articuloDAO.filtrar(campo, valor);
+		            break;
+		        case "Partituras":
+		            resultado = "Partituras:\n" + partituraDAO.filtrar(campo, valor);
+		            break;
+		        case "Películas":
+		            resultado = "Películas:\n" + peliculaDAO.filtrar(campo, valor);
+		            break;
+		        case "Revistas":
+		            resultado = "Revistas:\n" + revistaDAO.filtrar(campo, valor);
+		            break;
+		        case "Tesis":
+		            resultado = "Tesis:\n" + tesisDAO.filtrar(campo, valor);
+		            break;
+		        case "Trabajos":
+		            resultado = "Trabajos de Grado:\n" + trabajoDAO.filtrar(campo, valor);
+		            break;
+		        case "Todos":
+		        default:
+		            resultado += "Libros:\n" + libroDAO.filtrar(campo, valor) + "\n-------------------------------\n";
+		            resultado += "Artículos:\n" + articuloDAO.filtrar(campo, valor) + "\n-------------------------------\n";
+		            resultado += "Partituras:\n" + partituraDAO.filtrar(campo, valor) + "\n-------------------------------\n";
+		            resultado += "Películas:\n" + peliculaDAO.filtrar(campo, valor) + "\n-------------------------------\n";
+		            resultado += "Revistas:\n" + revistaDAO.filtrar(campo, valor) + "\n-------------------------------\n";
+		            resultado += "Tesis:\n" + tesisDAO.filtrar(campo, valor) + "\n-------------------------------\n";
+		            resultado += "Trabajos de Grado:\n" + trabajoDAO.filtrar(campo, valor) + "\n-------------------------------\n";
+		            break;
 		        }
 
 		        if (resultado.trim().isEmpty()) {
@@ -378,18 +400,37 @@ public class Controlador implements ActionListener {
 		            md.getAreaResultado().setText(resultado);
 		        }
 		    });
-		    break;
 
+		    // ELIMINAR
+		    md.getBtnEliminar().addActionListener(f -> {
+		        String titulo = md.getTxtEliminar().getText().trim();
+		        if (titulo.isEmpty()) {
+		            JOptionPane.showMessageDialog(null, "Por favor ingresa un título para eliminar.", "Eliminar vacío",
+		                    JOptionPane.WARNING_MESSAGE);
+		            return;
+		        }
+
+		        boolean eliminado = eliminarPorTitulo(titulo); 
+
+		        if (eliminado) {
+		            JOptionPane.showMessageDialog(null, "Publicación eliminada con éxito.", "Eliminar",
+		                    JOptionPane.INFORMATION_MESSAGE);
+		            md.dispose();
+		            mp.setVisible(true);
+		        } else {
+		            JOptionPane.showMessageDialog(null, "No se encontró ninguna publicación con ese título.", "Eliminar",
+		                    JOptionPane.ERROR_MESSAGE);
+		        }
+		    });
+		    break;
 
 
 		case "BOTON_ACTUALIZAR": {
 			JOptionPane.showMessageDialog(null, "¿Pregunta?", "PREGUNTA", JOptionPane.QUESTION_MESSAGE, null);
 			break;
 		}
-		case "BOTON_ELIMINAR": {
-			JOptionPane.showMessageDialog(null, "ADVERTENCIA", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE, null);
-			break;
-		}
+
+
 		}
 
 	}

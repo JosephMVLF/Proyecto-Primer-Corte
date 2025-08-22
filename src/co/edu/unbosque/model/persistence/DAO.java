@@ -9,6 +9,7 @@ public interface DAO <E>{
 	public boolean actualizar(int indice, E datoActualizado);//Necesita dar FeedBack si es posible hace la operacion o no
 	public String filtrar(String campo, Object valor);
 	public int contar();
+	String[] getTitulos();
 	
 
 }
