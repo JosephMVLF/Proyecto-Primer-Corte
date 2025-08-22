@@ -195,10 +195,10 @@ public class Controlador implements ActionListener {
 
 			} else if (seleccion.equals("Tesis")) {
 
-				rp.getLblTema1().setVisible(true);
-				rp.getTxtTema1().setVisible(true);
-				rp.getLblNumPagina().setVisible(true);
-				rp.getTxtNumPagina().setVisible(true);
+				rp.getLblTempo().setVisible(true);
+				rp.getTxtTempo().setVisible(true);
+				rp.getLblClave().setVisible(true);
+				rp.getTxtClave().setVisible(true);
 
 			} else if (seleccion.equals("Trabajo de grado")) {
 
