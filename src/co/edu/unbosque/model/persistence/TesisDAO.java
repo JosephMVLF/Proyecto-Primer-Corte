@@ -62,24 +62,24 @@ public class TesisDAO implements DAO<Tesis> {
 	}
 
 	@Override
-	public boolean filtrar(Object datoABuscar) { // Case con cada atributo
-		boolean encontrado = false;
+	public String filtrar(Object datoABuscar) {
+		String encontrado = "";
 
 		for (Tesis tesis : listaTesis) {
 			// Si el dato es un String → buscar en autor o título
 			if (datoABuscar instanceof String) {
 				String texto = (String) datoABuscar;
 				if (tesis.getAutor().equalsIgnoreCase(texto) || tesis.getTitulo().equalsIgnoreCase(texto)) {
-					System.out.println("Encontrado: " + tesis);
-					encontrado = true;
+				
+					encontrado += tesis;
 				}
 			}
 			// Si el dato es un Integer → buscar por año
 			else if (datoABuscar instanceof Integer) {
 				int anio = (Integer) datoABuscar;
 				if (tesis.getAnio() == anio) {
-					System.out.println("Encontrado: " + tesis);
-					encontrado = true;
+					
+					encontrado += tesis;
 				}
 			}
 		}

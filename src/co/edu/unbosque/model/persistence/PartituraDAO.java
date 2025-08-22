@@ -62,8 +62,8 @@ public class PartituraDAO implements DAO<Partitura> {
 	}
 
 	@Override
-	public boolean filtrar(Object datoABuscar) { // Case con cada atributo
-		boolean encontrado = false;
+	public String filtrar(Object datoABuscar) { // Case con cada atributo
+		String encontrado = "";
 
 		for (Partitura partitura : listaPartitura) {
 			// Si el dato es un String → buscar en autor o título
@@ -71,7 +71,7 @@ public class PartituraDAO implements DAO<Partitura> {
 				String texto = (String) datoABuscar;
 				if (partitura.getAutor().equalsIgnoreCase(texto) || partitura.getTitulo().equalsIgnoreCase(texto)) {
 					System.out.println("Encontrado: " + partitura);
-					encontrado = true;
+					encontrado += partitura;
 				}
 			}
 			// Si el dato es un Integer → buscar por año
@@ -79,7 +79,7 @@ public class PartituraDAO implements DAO<Partitura> {
 				int anio = (Integer) datoABuscar;
 				if (partitura.getAnio() == anio) {
 					System.out.println("Encontrado: " + partitura);
-					encontrado = true;
+					encontrado += partitura ;
 				}
 			}
 		}

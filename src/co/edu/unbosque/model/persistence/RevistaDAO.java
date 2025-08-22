@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import co.edu.unbosque.model.Revista;
 
+
 public class RevistaDAO implements DAO<Revista>{
 	private ArrayList<Revista> listaRevista;
 	
@@ -61,9 +62,28 @@ public class RevistaDAO implements DAO<Revista>{
 	}
 
 	@Override
-	public boolean filtrar(Object datoABuscar) { //Case con cada atributo
-		// TODO Auto-generated method stub
-		return false;
+	public String filtrar(Object datoABuscar) {
+		String encontrado = "";
+
+		for (Revista revista : listaRevista) {
+			// Si el dato es un String → buscar en autor o título
+			if (datoABuscar instanceof String) {
+				String texto = (String) datoABuscar;
+				if (revista.getAutor().equalsIgnoreCase(texto) || revista.getTitulo().equalsIgnoreCase(texto)) {
+				
+					encontrado += revista;
+				}
+			}
+			// Si el dato es un Integer → buscar por año
+			else if (datoABuscar instanceof Integer) {
+				int anio = (Integer) datoABuscar;
+				if (revista.getAnio() == anio) {
+					System.out.println("Encontrado: " + revista);
+					encontrado += revista;
+				}
+			}
+		}
+		return encontrado;
 	}
 
 	@Override

@@ -5,11 +5,7 @@ import java.awt.Font;
 import javax.swing.*;
 public class RegistroPublicacion extends JFrame{
 	
-
-
-	
 	    private static final long serialVersionUID = 1L;
-
 	
 	    private JButton btnEnviar;
 	    private JButton btnVolver;
