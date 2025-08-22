@@ -9,8 +9,6 @@ import co.edu.unbosque.model.*;
 
 import co.edu.unbosque.model.persistence.*;
 
-import co.edu.unbosque.view.Consola;
-
 import co.edu.unbosque.view.MenuPrincipal;
 import co.edu.unbosque.view.MostrarDatos;
 import co.edu.unbosque.view.RegistroPublicacion;
@@ -34,6 +32,7 @@ public class Controlador implements ActionListener {
 		rp = new RegistroPublicacion();
 
 		libroDAO = new LibroDAO();
+		articuloDAO = new ArticuloCientificoDAO();
 		partituraDAO = new PartituraDAO();
 		peliculaDAO = new PeliculaDAO();
 		revistaDAO = new RevistaDAO();
@@ -75,8 +74,6 @@ public class Controlador implements ActionListener {
 		rp.getBtnVolver().addActionListener(this);
 		rp.getBtnVolver().setActionCommand("BOTON_VOLVER");
 
-		rp.getBtnRegistrar().addActionListener(this);
-		rp.getBtnRegistrar().setActionCommand("BOTON_REGISTRAR");
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -141,35 +138,7 @@ public class Controlador implements ActionListener {
 				rp.getLblClave().setVisible(true);
 				rp.getTxtTempo().setVisible(true);
 				rp.getTxtClave().setVisible(true);
-
-		
-			}else if(seleccion.equals("Película")) {
-				rp.getLblDirector().setVisible(true);
-				rp.getLblDuracion().setVisible(true);
-				rp.getTxtDirector().setVisible(true);
-				rp.getTxtDuracion().setVisible(true);
-
 				
-				
-			}else if(seleccion.equals("Revista")) {
-				rp.getLblTematica().setVisible(true);
-				rp.getLblEditorial().setVisible(true);
-				rp.getTxtTematica().setVisible(true);
-				rp.getTxtEditorial().setVisible(true);
-				
-			
-				
-			}else if(seleccion.equals("Tesis")) {
-				rp.getLblTema1().setVisible(true);
-				rp.getTxtTema1().setVisible(true);
-				rp.getlblNumPagina().setVisible(true);
-				rp.getTxtNumPagina().setVisible(true);
-				
-			
-				
-			}else if(seleccion.equals("Trabajo de grado")) {
-				rp.getLblTema2().setVisible(true);
-				rp.getLblCarreraAutor().setVisible(true);
 
 			} else if (seleccion.equals("Película")) {
 				
@@ -201,8 +170,7 @@ public class Controlador implements ActionListener {
 				rp.getTxtTema2().setVisible(true);
 				rp.getTxtCarreraAutor().setVisible(true);
 			}
-
-
+			
 			rp.repaint();
 			break;
 		}
@@ -221,7 +189,7 @@ public class Controlador implements ActionListener {
 				Libro l1 = new Libro(titulo, autor, anio, genero, pagina);
 				libroDAO.crear(l1);
 				
-				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
+				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE, null);
 			
 			}else if(seleccion.equals("Artículo Científico")) {
 				
