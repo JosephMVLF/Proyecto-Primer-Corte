@@ -69,7 +69,8 @@ public class RevistaDAO implements DAO<Revista>{
 			// Si el dato es un String → buscar en autor o título
 			if (datoABuscar instanceof String) {
 				String texto = (String) datoABuscar;
-				if (revista.getAutor().equalsIgnoreCase(texto) || revista.getTitulo().equalsIgnoreCase(texto)) {
+				if (revista.getAutor().equalsIgnoreCase(texto) || revista.getTitulo().equalsIgnoreCase(texto)
+					|| revista.getTematica().equalsIgnoreCase(texto) || revista.getEditorial().equalsIgnoreCase(texto)) {
 				
 					encontrado += revista;
 				}
@@ -78,7 +79,7 @@ public class RevistaDAO implements DAO<Revista>{
 			else if (datoABuscar instanceof Integer) {
 				int anio = (Integer) datoABuscar;
 				if (revista.getAnio() == anio) {
-					System.out.println("Encontrado: " + revista);
+					
 					encontrado += revista;
 				}
 			}

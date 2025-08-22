@@ -2,20 +2,23 @@ package co.edu.unbosque.model;
 
 public class Tesis extends Publicacion{
 
-	private String tema;
-
+	private String tema1;
+	private int numPagina;
+	
 	public Tesis() {
 		super();
 	}
 
-	public Tesis(String tema) {
+	public Tesis(String tema1, int numPagina) {
 		super();
-		this.tema = tema;
+		this.tema1 = tema1;
+		this.numPagina = numPagina;
 	}
 
-	public Tesis(String titulo, String autor, int anio, String tema) {
+	public Tesis(String titulo, String autor, int anio, String tema1, int numPagina) {
 		super(titulo, autor, anio);
-		this.tema = tema;
+		this.tema1 = tema1;
+		this.numPagina = numPagina;
 	}
 
 	public Tesis(String titulo, String autor, int anio) {
@@ -23,19 +26,27 @@ public class Tesis extends Publicacion{
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getTema() {
-		return tema;
+	public String getTema1() {
+		return tema1;
 	}
 
-	public void setTema(String tema) {
-		this.tema = tema;
+	public void setTema1(String tema1) {
+		this.tema1 = tema1;
+	}
+
+	public int getNumPagina() {
+		return numPagina;
+	}
+
+	public void setNumPagina(int numPagina) {
+		this.numPagina = numPagina;
 	}
 
 	@Override
 	public String toString() {
-		return super.toString() + "\n tema: " + tema ;
+		return super.toString() +  "\nTema: " + tema1 + "\nNúmero de paginas: " + numPagina ;
 	}
-	
-	
+
+
 	
 }
