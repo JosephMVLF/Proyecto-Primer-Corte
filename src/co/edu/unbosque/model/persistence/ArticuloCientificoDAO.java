@@ -29,7 +29,8 @@ public class ArticuloCientificoDAO implements DAO<ArticuloCientifico> {
 	public String mostrar() {
 		String contenido = "";
 		for (ArticuloCientifico articuloCientifico : listaArticulos) {
-			contenido += articuloCientifico.toString();
+			contenido += "-------------------------------------\n";
+			contenido += articuloCientifico.toString() + "\n";
 		}
 		return contenido;
 	}

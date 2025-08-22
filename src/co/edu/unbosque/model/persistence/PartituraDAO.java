@@ -30,7 +30,8 @@ public class PartituraDAO implements DAO<Partitura> {
 	public String mostrar() {
 		String contenido = "";
 		for (Partitura partitura : listaPartitura) {
-			contenido += partitura.toString();
+			contenido += "-------------------------------------\n";
+			contenido += partitura.toString() + "\n";
 		}
 		return contenido;
 	}

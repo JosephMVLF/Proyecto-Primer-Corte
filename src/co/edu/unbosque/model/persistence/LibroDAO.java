@@ -30,7 +30,8 @@ public class LibroDAO implements DAO<Libro> {
 	public String mostrar() {
 		String contenido = "";
 		for (Libro libro : listaLibro) {
-			contenido += libro.toString();
+			contenido += "-------------------------------------\n";
+			contenido += libro.toString() + "\n";
 		}
 		return contenido;
 	}

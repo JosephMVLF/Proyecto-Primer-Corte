@@ -30,7 +30,8 @@ public class TesisDAO implements DAO<Tesis> {
 	public String mostrar() {
 		String contenido = "";
 		for (Tesis Tesis : listaTesis) {
-			contenido += Tesis.toString();
+			contenido += "-------------------------------------\n";
+			contenido += Tesis.toString() + "\n";
 		}
 		return contenido;
 	}
