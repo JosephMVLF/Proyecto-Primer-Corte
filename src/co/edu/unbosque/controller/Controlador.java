@@ -72,34 +72,34 @@ public class Controlador implements ActionListener{
 			String seleccion = (String) rp.getCbPublicacion().getSelectedItem();
 			rp.getLblMensaje().setText("");
 
-			rp.getLblPaginas();
-			rp.getLblGenero();
-			rp.getTxtPaginas();
+			rp.getLblPaginas().setVisible(false);
+			rp.getLblGenero().setVisible(false);
+			rp.getTxtPaginas().setVisible(false);
 			rp.getTxtGenero();
-			rp.getLblRamaDeCiencia();
-			rp.getLblTema();
-			rp.getTxtRamaDeCiencia();
-			rp.getTxtTema();
-			rp.getLblTempo();
-			rp.getLblClave();
-			rp.getTxtTempo();
-			rp.getTxtClave();
-			rp.getLblDirector();
-			rp.getLblDuracion();
-			rp.getTxtDirector();
-			rp.getTxtDuracion();
-			rp.getLblTematica();
-			rp.getLblEditorial();
-			rp.getTxtTematica();
-			rp.getTxtEditorial();
-			rp.getLblTema1();
-			rp.getTxtTema1();
-			rp.getlblNumPagina();
-			rp.getTxtNumPagina();
-			rp.getLblTema2();
-			rp.getLblCarreraAutor();
-			rp.getTxtTema2();
-			rp.getTxtCarreraAutor();
+			rp.getLblRamaDeCiencia().setVisible(false);
+			rp.getLblTema().setVisible(false);
+			rp.getTxtRamaDeCiencia().setVisible(false);
+			rp.getTxtTema().setVisible(false);
+			rp.getLblTempo().setVisible(false);
+			rp.getLblClave().setVisible(false);
+			rp.getTxtTempo().setVisible(false);
+			rp.getTxtClave().setVisible(false);
+			rp.getLblDirector().setVisible(false);
+			rp.getLblDuracion().setVisible(false);
+			rp.getTxtDirector().setVisible(false);
+			rp.getTxtDuracion().setVisible(false);
+			rp.getLblTematica().setVisible(false);
+			rp.getLblEditorial().setVisible(false);
+			rp.getTxtTematica().setVisible(false);
+			rp.getTxtEditorial().setVisible(false);
+			rp.getLblTema1().setVisible(false);
+			rp.getTxtTema1().setVisible(false);
+			rp.getlblNumPagina().setVisible(false);
+			rp.getTxtNumPagina().setVisible(false);
+			rp.getLblTema2().setVisible(false);
+			rp.getLblCarreraAutor().setVisible(false);
+			rp.getTxtTema2().setVisible(false);
+			rp.getTxtCarreraAutor().setVisible(false);
 
 			if (seleccion.equals("Libro")) {
 				rp.getLblPaginas().setVisible(true);
@@ -107,48 +107,48 @@ public class Controlador implements ActionListener{
 				rp.getTxtPaginas().setVisible(true);
 				rp.getTxtGenero().setVisible(true);
 
-				rp.repaint();
-				break;
+			
+			
 			}else if(seleccion.equals("Artículo Científico")) {
 				rp.getLblRamaDeCiencia().setVisible(true);
 				rp.getLblTema().setVisible(true);
 				rp.getTxtRamaDeCiencia().setVisible(true);
 				rp.getTxtTema().setVisible(true);
 
-				rp.repaint();
-				break;
+				
+				
 			}else if(seleccion.equals("Partitura")) {
 				rp.getLblTempo().setVisible(true);
 				rp.getLblClave().setVisible(true);
 				rp.getTxtTempo().setVisible(true);
 				rp.getTxtClave().setVisible(true);
 				
-				rp.repaint();
-				break;
+			
+				
 			}else if(seleccion.equals("Película")) {
 				rp.getLblDirector().setVisible(true);;
 				rp.getLblDuracion().setVisible(true);;
 				rp.getTxtDirector().setVisible(true);;
 				rp.getTxtDuracion().setVisible(true);;
 
-				rp.repaint();
-				break;
+				
+				
 			}else if(seleccion.equals("Revista")) {
 				rp.getLblTematica().setVisible(true);;
 				rp.getLblEditorial().setVisible(true);;
 				rp.getTxtTematica().setVisible(true);;
 				rp.getTxtEditorial().setVisible(true);;
 				
-				rp.repaint();
-				break;
+			
+				
 			}else if(seleccion.equals("Tesis")) {
 				rp.getLblTema1().setVisible(true);;
 				rp.getTxtTema1().setVisible(true);;
 				rp.getlblNumPagina().setVisible(true);;
 				rp.getTxtNumPagina().setVisible(true);;
 				
-				rp.repaint();
-				break;
+			
+				
 			}else if(seleccion.equals("Trabajo de grado")) {
 				rp.getLblTema2().setVisible(true);;
 				rp.getLblCarreraAutor().setVisible(true);;

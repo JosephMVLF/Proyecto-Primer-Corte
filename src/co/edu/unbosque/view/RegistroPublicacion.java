@@ -165,7 +165,7 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        txtRamaDeCiencia = new JTextField();
 	        txtRamaDeCiencia.setFont(fontField);
-	        txtRamaDeCiencia.setBounds(150, 290, 200, 25);
+	        txtRamaDeCiencia.setBounds(180, 290, 200, 25);
 	        txtRamaDeCiencia.setVisible(false);
 	        this.add(txtRamaDeCiencia);
 	        
