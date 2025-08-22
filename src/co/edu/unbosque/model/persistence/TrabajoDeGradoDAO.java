@@ -71,7 +71,7 @@ public class TrabajoDeGradoDAO implements DAO<TrabajoDeGrado> {
 			if (datoABuscar instanceof String) {
 				String texto = (String) datoABuscar;
 				if (trabajo.getAutor().equalsIgnoreCase(texto) || trabajo.getTitulo().equalsIgnoreCase(texto)
-					|| trabajo.getCarreraAutor().equalsIgnoreCase(texto) || trabajo.getTema().equalsIgnoreCase(texto)) {
+					|| trabajo.getCarreraAutor().equalsIgnoreCase(texto) || trabajo.getTema2().equalsIgnoreCase(texto)) {
 					
 					encontrado += trabajo;
 				}

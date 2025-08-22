@@ -35,7 +35,7 @@ public class Revista extends Publicacion{
 	}
 	@Override
 	public String toString() {
-		return super.toString() + "\n Tematica: " + tematica + "\n Editorial: " + editorial;
+		return super.toString() + "\nTematica: " + tematica + "\nEditorial: " + editorial;
 	}
 	
 	

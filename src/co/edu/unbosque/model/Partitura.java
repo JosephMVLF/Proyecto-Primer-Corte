@@ -36,7 +36,7 @@ public class Partitura extends Publicacion{
 	}
 	@Override
 	public String toString() {
-		return super.toString() + "\n Tempo: " + tempo + "\n Clave de la partitura (SOL, FA, DO): " + clave ;
+		return super.toString() + "\nTempo: " + tempo + "\nClave de la partitura (SOL, FA, DO): " + clave ;
 	}
 	
 	

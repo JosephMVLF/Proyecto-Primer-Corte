@@ -35,7 +35,7 @@ public class Libro extends Publicacion{
 	}
 	@Override
 	public String toString() {
-		return super.toString() +  "\n Género: " + genero + "\n  Número de páginas: " + pagina ;
+		return super.toString() +  "\nGénero: " + genero + "\nNúmero de páginas: " + pagina ;
 	}
 	
 	
