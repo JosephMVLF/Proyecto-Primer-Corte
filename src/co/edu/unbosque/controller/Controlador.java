@@ -5,13 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import co.edu.unbosque.model.ArticuloCientifico;
-import co.edu.unbosque.model.Libro;
-import co.edu.unbosque.model.Partitura;
-import co.edu.unbosque.model.Pelicula;
-import co.edu.unbosque.model.Revista;
-import co.edu.unbosque.model.Tesis;
-import co.edu.unbosque.model.TrabajoDeGrado;
+
 import co.edu.unbosque.model.persistence.ArticuloCientificoDAO;
 import co.edu.unbosque.model.persistence.LibroDAO;
 import co.edu.unbosque.model.persistence.PartituraDAO;
@@ -19,7 +13,7 @@ import co.edu.unbosque.model.persistence.PeliculaDAO;
 import co.edu.unbosque.model.persistence.RevistaDAO;
 import co.edu.unbosque.model.persistence.TesisDAO;
 import co.edu.unbosque.model.persistence.TrabajoDeGradoDAO;
-import co.edu.unbosque.view.Consola;
+
 
 import co.edu.unbosque.view.MenuPrincipal;
 import co.edu.unbosque.view.MostrarDatos;
