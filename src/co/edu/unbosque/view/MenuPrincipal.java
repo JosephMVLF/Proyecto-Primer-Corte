@@ -83,13 +83,6 @@ public class MenuPrincipal extends JFrame {
 		btnMostrar.setFocusPainted(false);
 		add(btnMostrar);
 
-		btnActualizar = new JButton("Actualizar");
-		btnActualizar.setFont(fontField);
-		btnActualizar.setBounds(350, 270, 200, 40);
-		btnActualizar.setBackground(new Color(205, 133, 63));
-		btnActualizar.setForeground(Color.WHITE);
-		btnActualizar.setFocusPainted(false);
-		add(btnActualizar);
 
 		btnSalir = new JButton("Salir");
 		btnSalir.setFont(fontField);

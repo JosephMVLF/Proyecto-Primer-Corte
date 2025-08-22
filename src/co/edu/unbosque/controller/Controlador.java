@@ -102,8 +102,6 @@ public class Controlador implements ActionListener {
 		mp.getBtnMostrar().addActionListener(this);
 		mp.getBtnMostrar().setActionCommand("BOTON_MOSTRAR");
 
-		mp.getBtnActualizar().addActionListener(this);
-		mp.getBtnActualizar().setActionCommand("BOTON_ACTUALIZAR");
 
 		rp.getCbPublicacion().addActionListener(this);
 		rp.getCbPublicacion().setActionCommand("COMBO_PUBLICACION");
@@ -422,12 +420,6 @@ public class Controlador implements ActionListener {
 		        }
 		    });
 		    break;
-
-
-		case "BOTON_ACTUALIZAR": {
-			JOptionPane.showMessageDialog(null, "¿Pregunta?", "PREGUNTA", JOptionPane.QUESTION_MESSAGE, null);
-			break;
-		}
 
 
 		}
