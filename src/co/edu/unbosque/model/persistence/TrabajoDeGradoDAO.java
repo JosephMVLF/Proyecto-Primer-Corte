@@ -70,7 +70,9 @@ public class TrabajoDeGradoDAO implements DAO<TrabajoDeGrado> {
 			// Si el dato es un String → buscar en autor o título
 			if (datoABuscar instanceof String) {
 				String texto = (String) datoABuscar;
-				if (trabajo.getAutor().equalsIgnoreCase(texto) || trabajo.getTitulo().equalsIgnoreCase(texto)) {
+				if (trabajo.getAutor().equalsIgnoreCase(texto) || trabajo.getTitulo().equalsIgnoreCase(texto)
+					|| trabajo.getCarreraAutor().equalsIgnoreCase(texto) || trabajo.getTema2().equalsIgnoreCase(texto)) {
+					
 					encontrado += trabajo;
 				}
 			}
