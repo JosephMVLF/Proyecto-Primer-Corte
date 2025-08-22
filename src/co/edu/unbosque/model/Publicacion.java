@@ -43,7 +43,7 @@ public abstract class Publicacion {
 
 	@Override
 	public String toString() {
-		return "Título: " + titulo + "\n Autor: " + autor + "\n Año: " + anio;
+		return "Título: " + titulo + "\nAutor: " + autor + "\nAño: " + anio;
 	}
 	
 	

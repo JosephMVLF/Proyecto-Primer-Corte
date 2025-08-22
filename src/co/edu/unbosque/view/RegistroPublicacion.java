@@ -11,7 +11,6 @@ public class RegistroPublicacion extends JFrame{
 	    private JButton btnVolver;
 	    private JComboBox<String> cbPublicacion;
 	    private JButton btnCrear;
-	    private JButton btnMostrar;
 	    private JButton btnSalir;
 	    private JLabel lblTitulo;
 	    private JLabel lblNombre;
@@ -30,13 +29,35 @@ public class RegistroPublicacion extends JFrame{
 	    private JLabel lblRamaDeCiencia;
 	    private JTextField txtRamaDeCiencia;
 	    private JLabel lblTempo;
+	    private JTextField txtTempo;
+	    private JLabel lblClave;
+	    private JTextField txtClave;
+	    private JLabel lblDirector;
+	    private JTextField txtDirector;
+	    private JLabel lblDuracion;
+	    private JTextField txtDuracion;
+	    private JLabel lblTematica;
+	    private JTextField txtTematica;
+	    private JLabel lblEditorial;
+	    private JTextField txtEditorial;
+	    private JLabel lblTema1;
+	    private JTextField txtTema1;
+	    private JLabel lblNumPagina;
+	    private JTextField txtNumPagina;
+	    private JLabel lblCarreraAutor;
+	    private JTextField txtCarreraAutor;
+	    private JLabel lblTema2;
+	    private JTextField txtTema2;
+	  
+	  
+	    
 
 	    public RegistroPublicacion() {
 	        initComponents();
 	    }
 
 	    private void initComponents() {
-	        this.setTitle("Registro libro");
+	        this.setTitle("Registro publicaciones");
 	        this.setBounds(10, 10, 800, 600);
 	        this.setLocationRelativeTo(null);
 	        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -61,7 +82,7 @@ public class RegistroPublicacion extends JFrame{
 	        		"Tesis", 
 	        		"Trabajo de grado"});
 	        cbPublicacion.setFont(fontField);
-	        cbPublicacion.setBounds(150, 100, 200, 25);
+	        cbPublicacion.setBounds(180, 100, 200, 25);
 	        this.add(cbPublicacion);
 	        
 	        lblMensaje = new JLabel("");
@@ -77,7 +98,7 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        txtNombre = new JTextField();
 	        txtNombre.setFont(fontField);
-	        txtNombre.setBounds(150, 150, 200, 25);
+	        txtNombre.setBounds(180, 150, 200, 25);
 	        this.add(txtNombre);
 	        
 	        lblAutor = new JLabel("Autor:");
@@ -87,7 +108,7 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        txtAutor = new JTextField();
 	        txtAutor.setFont(fontField);
-	        txtAutor.setBounds(150, 185, 200, 25);
+	        txtAutor.setBounds(180, 185, 200, 25);
 	        this.add(txtAutor);
 	        
 	        lblAnio = new JLabel("Año:");
@@ -97,18 +118,18 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        txtAnio = new JTextField();
 	        txtAnio.setFont(fontField);
-	        txtAnio.setBounds(150, 220, 200, 25);
+	        txtAnio.setBounds(180, 220, 200, 25);
 	        this.add(txtAnio);
 	        
 	        lblGenero = new JLabel("Género:");
 	        lblGenero.setFont(fontField);
 	        lblGenero.setBounds(100, 255, 180, 25);
-	        lblGenero.setVisible(false); // Oculto al inicio
+	        lblGenero.setVisible(false); 
 	        this.add(lblGenero);
 
 	        txtGenero = new JTextField();
 	        txtGenero.setFont(fontField);
-	        txtGenero.setBounds(150, 255, 200, 25);
+	        txtGenero.setBounds(180, 255, 200, 25);
 	        txtGenero.setVisible(false);
 	        this.add(txtGenero);
 
@@ -120,7 +141,7 @@ public class RegistroPublicacion extends JFrame{
 
 	        txtPaginas = new JTextField();
 	        txtPaginas.setFont(fontField);
-	        txtPaginas.setBounds(150, 290, 200, 25);
+	        txtPaginas.setBounds(180, 290, 200, 25);
 	        txtPaginas.setVisible(false);
 	        this.add(txtPaginas);
 	        
@@ -132,7 +153,7 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        txtTema = new JTextField();
 	        txtTema.setFont(fontField);
-	        txtTema.setBounds(150, 255, 200, 25);
+	        txtTema.setBounds(180, 255, 200, 25);
 	        txtTema.setVisible(false);
 	        this.add(txtTema);
 
@@ -148,6 +169,126 @@ public class RegistroPublicacion extends JFrame{
 	        txtRamaDeCiencia.setVisible(false);
 	        this.add(txtRamaDeCiencia);
 	        
+	        lblTempo = new JLabel("Tempo:");
+	        lblTempo.setFont(fontField);
+	        lblTempo.setBounds(100, 255, 180, 25);
+	        lblTempo.setVisible(false);
+	        this.add(lblTempo);
+	        
+	        txtTempo = new JTextField();
+	        txtTempo.setFont(fontField);
+	        txtTempo.setBounds(180, 255, 200, 25);
+	        txtTempo.setVisible(false);
+	        this.add(txtTempo);
+	        
+	        lblClave = new JLabel("Clave de la partitura:" );
+	        lblClave.setFont(fontField);
+	        lblClave.setBounds(20, 290, 180, 25);
+	        lblClave.setVisible(false);
+	        this.add(lblClave);
+	        
+	        txtClave = new JTextField();
+	        txtClave.setFont(fontField);
+	        txtClave.setBounds(180, 290, 200, 25);
+	        txtClave.setVisible(false);
+	        this.add(txtClave);
+	        
+	        lblDirector = new JLabel("Director:");
+	        lblDirector.setFont(fontField);
+	        lblDirector.setBounds(90, 255, 180, 25);
+	        lblDirector.setVisible(false);
+	        this.add(lblDirector);
+	        
+	        txtDirector = new JTextField();
+	        txtDirector.setFont(fontField);
+	        txtDirector.setBounds(180, 255, 200, 25);
+	        txtDirector.setVisible(false);
+	        this.add(txtDirector);
+	        
+	        lblDuracion = new JLabel("Duración:" );
+	        lblDuracion.setFont(fontField);
+	        lblDuracion.setBounds(90, 290, 180, 25);
+	        lblDuracion.setVisible(false);
+	        this.add(lblDuracion);
+	        
+	        txtDuracion = new JTextField();
+	        txtDuracion.setFont(fontField);
+	        txtDuracion.setBounds(180, 290, 200, 25);
+	        txtDuracion.setVisible(false);
+	        this.add(txtDuracion);
+	        
+	        lblTematica = new JLabel("Temática:");
+	        lblTematica.setFont(fontField);
+	        lblTematica.setBounds(90, 255, 180, 25);
+	        lblTematica.setVisible(false);
+	        this.add(lblTematica);
+	        
+	        txtTematica = new JTextField();
+	        txtTematica.setFont(fontField);
+	        txtTematica.setBounds(180, 255, 200, 25);
+	        txtTematica.setVisible(false);
+	        this.add(txtTematica);
+	        
+	        lblEditorial = new JLabel("Editorial:" );
+	        lblEditorial.setFont(fontField);
+	        lblEditorial.setBounds(90, 290, 180, 25);
+	        lblEditorial.setVisible(false);
+	        this.add(lblEditorial);
+	        
+	        txtEditorial = new JTextField();
+	        txtEditorial.setFont(fontField);
+	        txtEditorial.setBounds(180, 290, 200, 25);
+	        txtEditorial.setVisible(false);
+	        this.add(txtEditorial);
+	        
+	        lblTema1 = new JLabel("Tema de la tesis:");
+	        lblTema1.setFont(fontField);
+	        lblTema1.setBounds(40, 255, 180, 25);
+	        lblTema1.setVisible(false);
+	        this.add(lblTema1);
+	        
+	        txtTema1 = new JTextField();
+	        txtTema1.setFont(fontField);
+	        txtTema1.setBounds(180, 255, 200, 25);
+	        txtTema1.setVisible(false);
+	        this.add(txtTema1);
+	        
+	        lblNumPagina = new JLabel("Número de páginas:" );
+	        lblNumPagina.setFont(fontField);
+	        lblNumPagina.setBounds(20, 290, 180, 25);
+	        lblNumPagina.setVisible(false);
+	        this.add(lblNumPagina);
+	        
+	        txtNumPagina = new JTextField();
+	        txtNumPagina.setFont(fontField);
+	        txtNumPagina.setBounds(180, 290, 200, 25);
+	        txtNumPagina.setVisible(false);
+	        this.add(txtNumPagina);
+	        
+	        lblTema2 = new JLabel("Tema del trabajo de grado:");
+	        lblTema2.setFont(fontField);
+	        lblTema2.setBounds(0, 255, 180, 25);
+	        lblTema2.setVisible(false);
+	        this.add(lblTema2);
+	        
+	        txtTema2 = new JTextField();
+	        txtTema2.setFont(fontField);
+	        txtTema2.setBounds(180, 255, 200, 25);
+	        txtTema2.setVisible(false);
+	        this.add(txtTema2);
+	        
+	        lblCarreraAutor = new JLabel("Carrera del autor:" );
+	        lblCarreraAutor.setFont(fontField);
+	        lblCarreraAutor.setBounds(20, 290, 180, 25);
+	        lblCarreraAutor.setVisible(false);
+	        this.add(lblCarreraAutor);
+	        
+	        txtCarreraAutor = new JTextField();
+	        txtCarreraAutor.setFont(fontField);
+	        txtCarreraAutor.setBounds(180, 290, 200, 25);
+	        txtCarreraAutor.setVisible(false);
+	        this.add(txtCarreraAutor);
+	        
 	        btnCrear = new JButton("Registrar ");
 	        btnCrear.setFont(fontField);
 	        btnCrear.setBounds(500, 110, 200, 40);
@@ -156,19 +297,9 @@ public class RegistroPublicacion extends JFrame{
 	        btnCrear.setFocusPainted(false);
 	        this.add(btnCrear);
 
-	        btnMostrar = new JButton("Mostrar ");
-	        btnMostrar.setFont(fontField);
-	        btnMostrar.setBounds(500, 160, 200, 40);
-	        btnMostrar.setBackground(new Color(66, 133, 244));
-	        btnMostrar.setForeground(Color.WHITE);
-	        btnMostrar.setFocusPainted(false);
-	        this.add(btnMostrar);
-	       	        
-	      
-	        
 	        btnVolver = new JButton("Volver");
 	        btnVolver.setFont(fontField);
-	        btnVolver.setBounds(500, 210, 200, 40);
+	        btnVolver.setBounds(500, 160, 200, 40);
 	        btnVolver.setBackground(new Color(100, 100, 100));
 	        btnVolver.setForeground(Color.WHITE);
 	        btnVolver.setFocusPainted(false);
@@ -202,14 +333,7 @@ public class RegistroPublicacion extends JFrame{
 			this.btnCrear = btnCrear;
 		}
 
-		public JButton getBtnMostrar() {
-			return btnMostrar;
-		}
-
-		public void setBtnMostrar(JButton btnMostrar) {
-			this.btnMostrar = btnMostrar;
-		}
-
+		
 	
 
 		public JButton getBtnSalir() {
@@ -358,6 +482,174 @@ public class RegistroPublicacion extends JFrame{
 
 		public void setTxtRamaDeCiencia(JTextField txtRamaDeCiencia) {
 			this.txtRamaDeCiencia = txtRamaDeCiencia;
+		}
+
+		public JLabel getLblTempo() {
+			return lblTempo;
+		}
+
+		public void setLblTempo(JLabel lblTempo) {
+			this.lblTempo = lblTempo;
+		}
+
+		public JTextField getTxtTempo() {
+			return txtTempo;
+		}
+
+		public void setTxtTempo(JTextField txtTempo) {
+			this.txtTempo = txtTempo;
+		}
+
+		public JLabel getLblClave() {
+			return lblClave;
+		}
+
+		public void setLblClave(JLabel lblClave) {
+			this.lblClave = lblClave;
+		}
+
+		public JTextField getTxtClave() {
+			return txtClave;
+		}
+
+		public void setTxtClave(JTextField txtClave) {
+			this.txtClave = txtClave;
+		}
+
+		public JLabel getLblDirector() {
+			return lblDirector;
+		}
+
+		public void setLblDirector(JLabel lblDirector) {
+			this.lblDirector = lblDirector;
+		}
+
+		public JTextField getTxtDirector() {
+			return txtDirector;
+		}
+
+		public void setTxtDirector(JTextField txtDirector) {
+			this.txtDirector = txtDirector;
+		}
+
+		public JLabel getLblDuracion() {
+			return lblDuracion;
+		}
+
+		public void setLblDuracion(JLabel lblDuracion) {
+			this.lblDuracion = lblDuracion;
+		}
+
+		public JTextField getTxtDuracion() {
+			return txtDuracion;
+		}
+
+		public void setTxtDuracion(JTextField txtDuracion) {
+			this.txtDuracion = txtDuracion;
+		}
+
+		public JLabel getLblTematica() {
+			return lblTematica;
+		}
+
+		public void setLblTematica(JLabel lblTematica) {
+			this.lblTematica = lblTematica;
+		}
+
+		public JTextField getTxtTematica() {
+			return txtTematica;
+		}
+
+		public void setTxtTematica(JTextField txtTematica) {
+			this.txtTematica = txtTematica;
+		}
+
+		public JLabel getLblEditorial() {
+			return lblEditorial;
+		}
+
+		public void setLblEditorial(JLabel lblEditorial) {
+			this.lblEditorial = lblEditorial;
+		}
+
+		public JTextField getTxtEditorial() {
+			return txtEditorial;
+		}
+
+		public void setTxtEditorial(JTextField txtEditorial) {
+			this.txtEditorial = txtEditorial;
+		}
+
+		public JLabel getlblNumPagina() {
+			return lblNumPagina;
+		}
+
+		public void setlblNumPagina(JLabel numPagina) {
+			this.lblNumPagina = numPagina;
+		}
+
+		public JTextField getTxtNumPagina() {
+			return txtNumPagina;
+		}
+
+		public void setTxtNumPagina(JTextField txtNumPagina) {
+			this.txtNumPagina = txtNumPagina;
+		}
+
+		public JLabel getLblTema1() {
+			return lblTema1;
+		}
+
+		public void setLblTema1(JLabel lblTema1) {
+			this.lblTema1 = lblTema1;
+		}
+
+		public JTextField getTxtTema1() {
+			return txtTema1;
+		}
+
+		public void setTxtTema1(JTextField txtTema1) {
+			this.txtTema1 = txtTema1;
+		}
+
+		public JLabel getLblNumPagina() {
+			return lblNumPagina;
+		}
+
+		public void setLblNumPagina(JLabel lblNumPagina) {
+			this.lblNumPagina = lblNumPagina;
+		}
+
+		public JLabel getLblCarreraAutor() {
+			return lblCarreraAutor;
+		}
+
+		public void setLblCarreraAutor(JLabel lblCarreraAutor) {
+			this.lblCarreraAutor = lblCarreraAutor;
+		}
+
+		public JTextField getTxtCarreraAutor() {
+			return txtCarreraAutor;
+		}
+
+		public void setTxtCarreraAutor(JTextField txtCarreraAutor) {
+			this.txtCarreraAutor = txtCarreraAutor;
+		}
+
+		public JLabel getLblTema2() {
+			return lblTema2;
+		}
+
+		public void setLblTema2(JLabel lblTema2) {
+			this.lblTema2 = lblTema2;
+		}
+
+		public JTextField getTxtTema2() {
+			return txtTema2;
+		}
+
+		public void setTxtTema2(JTextField txtTema2) {
+			this.txtTema2 = txtTema2;
 		}
 
 		

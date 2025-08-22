@@ -35,7 +35,7 @@ public class Pelicula extends Publicacion{
 	}
 	@Override
 	public String toString() {
-		return super.toString() + "\n Director: " + director + "\n Duración: " + duracion;
+		return super.toString() + "\nDirector: " + director + "\nDuración: " + duracion;
 	}
 	
 	
