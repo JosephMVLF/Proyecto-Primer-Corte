@@ -21,7 +21,8 @@ public class PeliculaDAO implements DAO<Pelicula> {
 	public String mostrar() {
 		String contenido = "";
 		for (Pelicula pelicula : listaPelicula) {
-			contenido += pelicula.toString();
+			contenido += "-------------------------------------\n";
+			contenido += pelicula.toString() + "\n";
 		}
 		return contenido;
 	}

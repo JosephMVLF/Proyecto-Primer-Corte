@@ -36,6 +36,7 @@ public class MenuPrincipal extends JFrame{
 	        Font fontField = new Font("Segoe UI", Font.PLAIN, 14);
 		
 		this.setVisible(true);
+		this.setResizable(false);
 		
 		lblBienvenida = new JLabel("Bienvenido a la Biblioteca de la Universidad El Bosque");
 		lblBienvenida.setFont(new Font("Segoe UI", Font.BOLD, 24));

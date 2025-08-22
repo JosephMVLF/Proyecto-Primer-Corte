@@ -5,7 +5,6 @@ import java.awt.Font;
 import javax.swing.*;
 public class RegistroPublicacion extends JFrame{
 	
-	    private static final long serialVersionUID = 1L;
 	
 	    private JButton btnVolver;
 	    private JComboBox<String> cbPublicacion;
@@ -92,7 +91,7 @@ public class RegistroPublicacion extends JFrame{
 
 	        lblNombre = new JLabel("Título:");
 	        lblNombre.setFont(fontLabel);
-	        lblNombre.setBounds(100, 150, 180, 25);
+	        lblNombre.setBounds(130, 150, 180, 25);
 	        this.add(lblNombre);
 	        
 	        txtNombre = new JTextField();
@@ -102,7 +101,7 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        lblAutor = new JLabel("Autor:");
 	        lblAutor.setFont(fontLabel);
-	        lblAutor.setBounds(100, 185, 180, 25);
+	        lblAutor.setBounds(130, 185, 180, 25);
 	        this.add(lblAutor);
 	        
 	        txtAutor = new JTextField();
@@ -112,7 +111,7 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        lblAnio = new JLabel("Año:");
 	        lblAnio.setFont(fontField);
-	        lblAnio.setBounds(100, 220, 180, 25);
+	        lblAnio.setBounds(140, 220, 180, 25);
 	        this.add(lblAnio);
 	        
 	        txtAnio = new JTextField();
@@ -122,7 +121,7 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        lblGenero = new JLabel("Género:");
 	        lblGenero.setFont(fontField);
-	        lblGenero.setBounds(100, 255, 180, 25);
+	        lblGenero.setBounds(120, 255, 180, 25);
 	        lblGenero.setVisible(false); 
 	        this.add(lblGenero);
 
@@ -146,7 +145,7 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        lblTema = new JLabel("Tema del artículo:");
 	        lblTema.setFont(fontField);
-	        lblTema.setBounds(20, 255, 180, 25);
+	        lblTema.setBounds(60, 255, 180, 25);
 	        lblTema.setVisible(false);
 	        this.add(lblTema);
 	        
@@ -158,7 +157,7 @@ public class RegistroPublicacion extends JFrame{
 
 	        lblRamaDeCiencia = new JLabel("Rama de la ciencia:");
 	        lblRamaDeCiencia.setFont(fontField);
-	        lblRamaDeCiencia.setBounds(20, 290, 180, 25);
+	        lblRamaDeCiencia.setBounds(60, 290, 180, 25);
 	        lblRamaDeCiencia.setVisible(false);
 	        this.add(lblRamaDeCiencia);
 	        
@@ -170,7 +169,7 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        lblTempo = new JLabel("Tempo:");
 	        lblTempo.setFont(fontField);
-	        lblTempo.setBounds(100, 255, 180, 25);
+	        lblTempo.setBounds(120, 255, 180, 25);
 	        lblTempo.setVisible(false);
 	        this.add(lblTempo);
 	        
@@ -182,7 +181,7 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        lblClave = new JLabel("Clave de la partitura:" );
 	        lblClave.setFont(fontField);
-	        lblClave.setBounds(20, 290, 180, 25);
+	        lblClave.setBounds(40, 290, 180, 25);
 	        lblClave.setVisible(false);
 	        this.add(lblClave);
 	        
@@ -194,7 +193,7 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        lblDirector = new JLabel("Director:");
 	        lblDirector.setFont(fontField);
-	        lblDirector.setBounds(90, 255, 180, 25);
+	        lblDirector.setBounds(110, 255, 180, 25);
 	        lblDirector.setVisible(false);
 	        this.add(lblDirector);
 	        
@@ -206,7 +205,7 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        lblDuracion = new JLabel("Duración:" );
 	        lblDuracion.setFont(fontField);
-	        lblDuracion.setBounds(90, 290, 180, 25);
+	        lblDuracion.setBounds(110, 290, 180, 25);
 	        lblDuracion.setVisible(false);
 	        this.add(lblDuracion);
 	        
@@ -218,7 +217,7 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        lblTematica = new JLabel("Temática:");
 	        lblTematica.setFont(fontField);
-	        lblTematica.setBounds(90, 255, 180, 25);
+	        lblTematica.setBounds(110, 255, 180, 25);
 	        lblTematica.setVisible(false);
 	        this.add(lblTematica);
 	        
@@ -230,7 +229,7 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        lblEditorial = new JLabel("Editorial:" );
 	        lblEditorial.setFont(fontField);
-	        lblEditorial.setBounds(90, 290, 180, 25);
+	        lblEditorial.setBounds(115, 290, 180, 25);
 	        lblEditorial.setVisible(false);
 	        this.add(lblEditorial);
 	        
@@ -242,7 +241,7 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        lblTema1 = new JLabel("Tema de la tesis:");
 	        lblTema1.setFont(fontField);
-	        lblTema1.setBounds(40, 255, 180, 25);
+	        lblTema1.setBounds(60, 255, 180, 25);
 	        lblTema1.setVisible(false);
 	        this.add(lblTema1);
 	        
@@ -254,7 +253,7 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        lblNumPagina = new JLabel("Número de páginas:" );
 	        lblNumPagina.setFont(fontField);
-	        lblNumPagina.setBounds(20, 290, 180, 25);
+	        lblNumPagina.setBounds(40, 290, 180, 25);
 	        lblNumPagina.setVisible(false);
 	        this.add(lblNumPagina);
 	        
@@ -278,7 +277,7 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        lblCarreraAutor = new JLabel("Carrera del autor:" );
 	        lblCarreraAutor.setFont(fontField);
-	        lblCarreraAutor.setBounds(20, 290, 180, 25);
+	        lblCarreraAutor.setBounds(60, 290, 180, 25);
 	        lblCarreraAutor.setVisible(false);
 	        this.add(lblCarreraAutor);
 	        
@@ -288,7 +287,11 @@ public class RegistroPublicacion extends JFrame{
 	        txtCarreraAutor.setVisible(false);
 	        this.add(txtCarreraAutor);
 	        
+
 	        btnRegistrar = new JButton("Registrar ");
+
+	        btnRegistrar = new JButton("Registrar");
+
 	        btnRegistrar.setFont(fontField);
 	        btnRegistrar.setBounds(500, 110, 200, 40);
 	        btnRegistrar.setBackground(new Color(52, 168, 83));
@@ -307,7 +310,6 @@ public class RegistroPublicacion extends JFrame{
 	        
 	        
 	    }
-
 
 		public JButton getBtnVolver() {
 			return btnVolver;
@@ -344,9 +346,6 @@ public class RegistroPublicacion extends JFrame{
 			this.lblTitulo = lblTitulo;
 		}
 
-		public static long getSerialversionuid() {
-			return serialVersionUID;
-		}
 
 		public JComboBox<String> getCbPublicacion() {
 			return cbPublicacion;

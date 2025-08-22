@@ -31,7 +31,8 @@ public class TrabajoDeGradoDAO implements DAO<TrabajoDeGrado> {
 	public String mostrar() {
 		String contenido = "";
 		for (TrabajoDeGrado TrabajoDeGrado : listaTrabajoDeGrado) {
-			contenido += TrabajoDeGrado.toString();
+			contenido += "-------------------------------------\n";
+			contenido += TrabajoDeGrado.toString() + "\n";
 		}
 		return contenido;
 	}

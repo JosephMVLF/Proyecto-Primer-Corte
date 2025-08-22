@@ -30,7 +30,8 @@ public class RevistaDAO implements DAO<Revista>{
 	public String mostrar() {
 		String contenido="";
 		for (Revista Revista : listaRevista) {
-			contenido += Revista.toString();
+			contenido += "-------------------------------------\n";
+			contenido += Revista.toString() + "\n";
 		}
 		return contenido;
 	}

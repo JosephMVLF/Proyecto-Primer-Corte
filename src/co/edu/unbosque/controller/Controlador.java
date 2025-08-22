@@ -1,67 +1,59 @@
 package co.edu.unbosque.controller;
 
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import co.edu.unbosque.model.ArticuloCientifico;
-import co.edu.unbosque.model.Libro;
-import co.edu.unbosque.model.Partitura;
-import co.edu.unbosque.model.Pelicula;
-import co.edu.unbosque.model.Revista;
-import co.edu.unbosque.model.Tesis;
-import co.edu.unbosque.model.TrabajoDeGrado;
+import co.edu.unbosque.model.*;
+
 import co.edu.unbosque.model.persistence.*;
+
 import co.edu.unbosque.view.Consola;
+
 import co.edu.unbosque.view.MenuPrincipal;
+import co.edu.unbosque.view.MostrarDatos;
 import co.edu.unbosque.view.RegistroPublicacion;
 
+public class Controlador implements ActionListener {
 
-public class Controlador implements ActionListener{
-	
 	private MenuPrincipal mp;
 	private RegistroPublicacion rp;
 
-	private LibroDAO lbDAO;
-	private ArticuloCientificoDAO atDAO;
-	private PartituraDAO paDAO;
-	private PeliculaDAO peDAO;
-	private RevistaDAO reDAO;
-	private TesisDAO teDAO;
-	private TrabajoDeGradoDAO tdgDAO;
-	
+	private LibroDAO libroDAO;
+	private ArticuloCientificoDAO articuloDAO;
+	private PartituraDAO partituraDAO;
+	private PeliculaDAO peliculaDAO;
+	private RevistaDAO revistaDAO;
+	private TesisDAO tesisDAO;
+	private TrabajoDeGradoDAO trabajoDAO;
 
 	public Controlador() {
 
 		mp = new MenuPrincipal();
-		rp= new RegistroPublicacion();
-		
-		lbDAO = new LibroDAO();
-		paDAO = new PartituraDAO();
-		peDAO = new PeliculaDAO();
-		reDAO = new RevistaDAO();
-		teDAO = new TesisDAO();
-		tdgDAO = new TrabajoDeGradoDAO();
+		rp = new RegistroPublicacion();
+
+		libroDAO = new LibroDAO();
+		partituraDAO = new PartituraDAO();
+		peliculaDAO = new PeliculaDAO();
+		revistaDAO = new RevistaDAO();
+		tesisDAO = new TesisDAO();
+		trabajoDAO = new TrabajoDeGradoDAO();
 
 	}
 
 	public void runGUI() {
 		mp.setVisible(true);
 		rp.setVisible(false);
-
 		agregarOyentes();
 
 	}
 
 	public void agregarOyentes() {
 
-
-
 		mp.getBtnCrear().addActionListener(this);
 		mp.getBtnCrear().setActionCommand("BOTON_CREAR");
-		
+
 		rp.getBtnRegistrar().addActionListener(this);
 		rp.getBtnRegistrar().setActionCommand("BOTON_REGISTRAR");
 
@@ -79,6 +71,12 @@ public class Controlador implements ActionListener{
 
 		mp.getBtnSalir().addActionListener(this);
 		mp.getBtnSalir().setActionCommand("BOTON_SALIR");
+
+		rp.getBtnVolver().addActionListener(this);
+		rp.getBtnVolver().setActionCommand("BOTON_VOLVER");
+
+		rp.getBtnRegistrar().addActionListener(this);
+		rp.getBtnRegistrar().setActionCommand("BOTON_REGISTRAR");
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -89,6 +87,7 @@ public class Controlador implements ActionListener{
 			rp.limpiarCampos();
 			mp.setVisible(false); 
 			rp.setVisible(true);  
+
 			break;
 		}
 
@@ -131,24 +130,19 @@ public class Controlador implements ActionListener{
 				rp.getTxtPagina().setVisible(true);
 				rp.getTxtGenero().setVisible(true);
 
-			
-			
-			}else if(seleccion.equals("Artículo Científico")) {
+			} else if (seleccion.equals("Artículo Científico")) {
 				rp.getLblRamaDeCiencia().setVisible(true);
 				rp.getLblTema().setVisible(true);
 				rp.getTxtRamaDeCiencia().setVisible(true);
 				rp.getTxtTema().setVisible(true);
 
-				
-				
-			}else if(seleccion.equals("Partitura")) {
+			} else if (seleccion.equals("Partitura")) {
 				rp.getLblTempo().setVisible(true);
 				rp.getLblClave().setVisible(true);
 				rp.getTxtTempo().setVisible(true);
 				rp.getTxtClave().setVisible(true);
-				
-			
-				
+
+		
 			}else if(seleccion.equals("Película")) {
 				rp.getLblDirector().setVisible(true);
 				rp.getLblDuracion().setVisible(true);
@@ -176,15 +170,43 @@ public class Controlador implements ActionListener{
 			}else if(seleccion.equals("Trabajo de grado")) {
 				rp.getLblTema2().setVisible(true);
 				rp.getLblCarreraAutor().setVisible(true);
+
+			} else if (seleccion.equals("Película")) {
+				
+				rp.getLblDirector().setVisible(true);
+				rp.getLblDuracion().setVisible(true);
+				rp.getTxtDirector().setVisible(true);
+				rp.getTxtDuracion().setVisible(true);
+				
+
+			} else if (seleccion.equals("Revista")) {
+				
+				rp.getLblTematica().setVisible(true);
+				rp.getLblEditorial().setVisible(true);
+				rp.getTxtTematica().setVisible(true);
+				rp.getTxtEditorial().setVisible(true);
+
+
+			} else if (seleccion.equals("Tesis")) {
+				
+				rp.getLblTema1().setVisible(true);
+				rp.getTxtTema1().setVisible(true);
+				rp.getlblNumPagina().setVisible(true);
+				rp.getTxtNumPagina().setVisible(true);
+
+			} else if (seleccion.equals("Trabajo de grado")) {
+				
+				rp.getLblTema2().setVisible(true);
+				rp.getLblCarreraAutor().setVisible(true);
 				rp.getTxtTema2().setVisible(true);
 				rp.getTxtCarreraAutor().setVisible(true);
-				
-				
 			}
+
 
 			rp.repaint();
 			break;
 		}
+
 		case "BOTON_REGISTRAR": {
 			String seleccion = (String) rp.getCbPublicacion().getSelectedItem();
 			
@@ -197,7 +219,7 @@ public class Controlador implements ActionListener{
 				int pagina = Integer.parseInt(rp.getTxtPagina().getText());
 				
 				Libro l1 = new Libro(titulo, autor, anio, genero, pagina);
-				lbDAO.crear(l1);
+				libroDAO.crear(l1);
 				
 				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
 			
@@ -211,7 +233,7 @@ public class Controlador implements ActionListener{
 				
 				
 				ArticuloCientifico at = new ArticuloCientifico(titulo, autor, anio, tema, ramaDeCiencia);
-				atDAO.crear(at);
+				articuloDAO.crear(at);
 				
 				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
 				
@@ -224,7 +246,7 @@ public class Controlador implements ActionListener{
 				String clave = rp.getTxtClave().getText();
 				
 				Partitura pa = new Partitura(titulo, autor, anio, tempo, clave);
-				paDAO.crear(pa);
+				partituraDAO.crear(pa);
 				
 				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
 				
@@ -237,7 +259,7 @@ public class Controlador implements ActionListener{
 				float duracion = Float.parseFloat(rp.getTxtDuracion().getText());
 				
 				Pelicula pe = new Pelicula(titulo, autor, anio, director, duracion);
-				peDAO.crear(pe);
+				peliculaDAO.crear(pe);
 				
 				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
 				
@@ -250,7 +272,7 @@ public class Controlador implements ActionListener{
 				String editorial = rp.getTxtEditorial().getText();
 				
 				Revista re = new Revista(titulo, autor, anio, tematica, editorial);
-				reDAO.crear(re);
+				revistaDAO.crear(re);
 				
 				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
 				
@@ -263,7 +285,7 @@ public class Controlador implements ActionListener{
 				int numPagina = Integer.parseInt(rp.getTxtNumPagina().getText());
 				
 				Tesis te = new Tesis(titulo, autor, anio, tema1, numPagina);
-				teDAO.crear(te);
+				tesisDAO.crear(te);
 				
 				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE,null);
 				
@@ -276,27 +298,46 @@ public class Controlador implements ActionListener{
 				String tema2 = rp.getTxtTema2().getText();
 				
 				TrabajoDeGrado tdg = new TrabajoDeGrado(titulo, autor, anio, carreraAutor, tema2);
-				tdgDAO.crear(tdg);
+				trabajoDAO.crear(tdg);
 				
 				JOptionPane.showMessageDialog(null, "Publicación registrada con exito", "Información Registro", JOptionPane.INFORMATION_MESSAGE, null);
 				
 			}
-			
-			
-			
+				
 			rp.setVisible(false);
 			mp.setVisible(true);
 			break;
 		}
 		
+
+		case "BOTON_VOLVER": {
+			mp.setVisible(true);
+			rp.setVisible(false);
+			break;
+		}
+
 		case "BOTON_SALIR": {
 			System.exit(0);
 			break;
 		}
-		case "BOTON_MOSTRAR": {
-			JOptionPane.showMessageDialog(null, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE, null);
-			break;
-		}
+
+		case "BOTON_MOSTRAR":
+		    mp.setVisible(false); // Ocultarla
+
+		    new MostrarDatos(
+		        mp,
+		        libroDAO.mostrar(), articuloDAO.mostrar(),
+		        partituraDAO.mostrar(), peliculaDAO.mostrar(),
+		        revistaDAO.mostrar(), tesisDAO.mostrar(),
+		        trabajoDAO.mostrar(),
+		        libroDAO.contar(), articuloDAO.contar(),
+		        partituraDAO.contar(), peliculaDAO.contar(),
+		        revistaDAO.contar(), tesisDAO.contar(),
+		        trabajoDAO.contar()
+		    );
+		    break;
+
+
 		case "BOTON_ACTUALIZAR": {
 			JOptionPane.showMessageDialog(null, "¿Pregunta?", "PREGUNTA", JOptionPane.QUESTION_MESSAGE, null);
 			break;
@@ -305,9 +346,8 @@ public class Controlador implements ActionListener{
 			JOptionPane.showMessageDialog(null, "ADVERTENCIA", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE, null);
 			break;
 		}
-
 		}
-	}
 
+	}
 
 }
