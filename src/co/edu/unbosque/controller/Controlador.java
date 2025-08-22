@@ -93,7 +93,7 @@ public class Controlador implements ActionListener{
 				rp.getTxtRamaDeCiencia().setVisible(true);
 				rp.getTxtTema().setVisible(true);
 
-			}
+			}else if(seleccion.equals(""))
 
 
 			rp.repaint();

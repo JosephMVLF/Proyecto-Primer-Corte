@@ -14,13 +14,6 @@ public class MenuPrincipal extends JFrame{
 	private JButton btnActualizar;
 	private JButton btnEliminar;
 	private JButton btnSalir;
-	private JButton btnArticulo;
-	private JButton btnLibro;
-	private JButton btnPartitura;
-	private JButton btnPelicula;
-	private JButton btnRevista;
-	private JButton btnTesis;
-	private JButton btnTrabajoDeGrado;
 	private JLabel label1;
 	private JLabel lblBienvenida;
 	private JLabel lblPregunta;
@@ -38,6 +31,8 @@ public class MenuPrincipal extends JFrame{
 		this.setLayout(null);
 		this.getContentPane().setBackground(Color.WHITE);
 		
+		 Font fontLabel = new Font("Arial", Font.PLAIN, 14);
+	        Font fontField = new Font("Segoe UI", Font.PLAIN, 14);
 		
 		this.setVisible(true);
 		
@@ -53,40 +48,7 @@ public class MenuPrincipal extends JFrame{
 		add(lblPregunta);
 		
 
-		btnArticulo = new JButton("Articulo");
-		btnArticulo.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		btnArticulo.setBounds(0,300, 100, 100);
-		add(btnArticulo);
-		
-		btnLibro = new JButton("Libro");
-		btnLibro.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		btnLibro.setBounds(0,400, 100, 100);
-		add(btnLibro);
-		
-		btnPartitura = new JButton("Partitura");
-		btnPartitura.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		btnPartitura.setBounds(0,500, 100, 100);
-		add(btnPartitura);
-		
-		btnPelicula = new JButton("Pelicula");
-		btnPelicula.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		btnPelicula.setBounds(0,600, 100, 100);
-		add(btnPelicula);
-		
-		btnRevista = new JButton("Revista");
-		btnRevista.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		btnRevista.setBounds(200,300, 100, 100);
-		add(btnRevista);
-		
-		btnTesis = new JButton("Tesis");
-		btnTesis.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		btnTesis.setBounds(200,400, 100, 100);
-		add(btnTesis);
-		
-		btnTrabajoDeGrado = new JButton("Trabajo de grado");
-		btnTrabajoDeGrado.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		btnTrabajoDeGrado.setBounds(200,500, 100, 100);
-		add(btnTrabajoDeGrado);
+	
 
 		btnCrear = new JButton("Crear");
 		btnCrear.setFont(new Font("Segoe UI", Font.PLAIN, 18));
@@ -110,7 +72,13 @@ public class MenuPrincipal extends JFrame{
 		btnActualizar.setBounds(100, 500, 100, 50);
 		add(btnActualizar);
 	
-
+		 btnSalir = new JButton("Salir");
+		 btnSalir.setFont(fontField);
+		 btnSalir.setBounds(500, 210, 200, 40);
+		 btnSalir.setBackground(new Color(100, 100, 100));
+		 btnSalir.setForeground(Color.WHITE);
+		 btnSalir.setFocusPainted(false);
+	        this.add(btnSalir);
 	}
 
 	public JButton getBtnCrear() {
@@ -177,61 +145,6 @@ public class MenuPrincipal extends JFrame{
 		this.lblPregunta = lblPregunta;
 	}
 
-	public JButton getBtnArticulo() {
-		return btnArticulo;
-	}
-
-	public void setBtnArticulo(JButton btnArticulo) {
-		this.btnArticulo = btnArticulo;
-	}
-
-	public JButton getBtnLibro() {
-		return btnLibro;
-	}
-
-	public void setBtnLibro(JButton btnLibro) {
-		this.btnLibro = btnLibro;
-	}
-
-	public JButton getBtnPartitura() {
-		return btnPartitura;
-	}
-
-	public void setBtnPartitura(JButton btnPartitura) {
-		this.btnPartitura = btnPartitura;
-	}
-
-	public JButton getBtnPelicula() {
-		return btnPelicula;
-	}
-
-	public void setBtnPelicula(JButton btnPelicula) {
-		this.btnPelicula = btnPelicula;
-	}
-
-	public JButton getBtnRevista() {
-		return btnRevista;
-	}
-
-	public void setBtnRevista(JButton btnRevista) {
-		this.btnRevista = btnRevista;
-	}
-
-	public JButton getBtnTesis() {
-		return btnTesis;
-	}
-
-	public void setBtnTesis(JButton btnTesis) {
-		this.btnTesis = btnTesis;
-	}
-
-	public JButton getBtnTrabajoDeGrado() {
-		return btnTrabajoDeGrado;
-	}
-
-	public void setBtnTrabajoDeGrado(JButton btnTrabajoDeGrado) {
-		this.btnTrabajoDeGrado = btnTrabajoDeGrado;
-	}
 	
 
 	
