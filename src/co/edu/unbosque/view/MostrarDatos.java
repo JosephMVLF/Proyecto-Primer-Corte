@@ -22,7 +22,7 @@ public class MostrarDatos extends JFrame {
 
         setTitle("Resumen de Publicaciones");
         setSize(800, 600);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
         int totalGeneral = totalLibros + totalArticulos + totalPartituras + totalPeliculas +

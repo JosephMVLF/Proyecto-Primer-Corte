@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 
 
 public class MenuPrincipal extends JFrame{
+    private static final long serialVersionUID = 1L;
 
 	private JButton btnCrear;
 	private JButton btnMostrar;
@@ -33,7 +34,7 @@ public class MenuPrincipal extends JFrame{
 		this.getContentPane().setBackground(Color.WHITE);
 		
 		 Font fontLabel = new Font("Arial", Font.PLAIN, 14);
-	        Font fontField = new Font("Segoe UI", Font.PLAIN, 14);
+	     Font fontField = new Font("Segoe UI", Font.PLAIN, 14);
 		
 		this.setVisible(true);
 		this.setResizable(false);

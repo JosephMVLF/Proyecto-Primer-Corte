@@ -4,6 +4,7 @@ import java.awt.Font;
 
 import javax.swing.*;
 public class RegistroPublicacion extends JFrame{
+    private static final long serialVersionUID = 1L;
 	
 	
 	    private JButton btnVolver;
@@ -289,9 +290,6 @@ public class RegistroPublicacion extends JFrame{
 	        
 
 	        btnRegistrar = new JButton("Registrar ");
-
-	        btnRegistrar = new JButton("Registrar");
-
 	        btnRegistrar.setFont(fontField);
 	        btnRegistrar.setBounds(500, 110, 200, 40);
 	        btnRegistrar.setBackground(new Color(52, 168, 83));

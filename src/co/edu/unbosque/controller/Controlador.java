@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import co.edu.unbosque.model.*;
 
+import co.edu.unbosque.model.*;
 import co.edu.unbosque.model.persistence.*;
 
 import co.edu.unbosque.view.MenuPrincipal;
@@ -26,6 +26,10 @@ public class Controlador implements ActionListener {
 	private TesisDAO tesisDAO;
 	private TrabajoDeGradoDAO trabajoDAO;
 
+
+
+
+
 	public Controlador() {
 
 		mp = new MenuPrincipal();
@@ -44,6 +48,17 @@ public class Controlador implements ActionListener {
 	public void runGUI() {
 		mp.setVisible(true);
 		rp.setVisible(false);
+
+
+
+		articuloDAO = new ArticuloCientificoDAO();
+		libroDAO = new LibroDAO();
+		partituraDAO = new PartituraDAO();
+		peliculaDAO = new PeliculaDAO();
+		revistaDAO = new RevistaDAO();
+		tesisDAO = new TesisDAO();
+		trabajoDAO = new TrabajoDeGradoDAO();
+
 		agregarOyentes();
 
 	}
@@ -138,8 +153,8 @@ public class Controlador implements ActionListener {
 				rp.getLblClave().setVisible(true);
 				rp.getTxtTempo().setVisible(true);
 				rp.getTxtClave().setVisible(true);
-				
 
+				
 			} else if (seleccion.equals("Película")) {
 				
 				rp.getLblDirector().setVisible(true);
@@ -290,7 +305,7 @@ public class Controlador implements ActionListener {
 		}
 
 		case "BOTON_MOSTRAR":
-		    mp.setVisible(false); // Ocultarla
+		    mp.setVisible(false); 
 
 		    new MostrarDatos(
 		        mp,
