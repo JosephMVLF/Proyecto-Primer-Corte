@@ -21,7 +21,15 @@ public class RegistroPublicacion extends JFrame{
 	    private JLabel lblAnio;
 	    private JTextField txtAnio;
 	    private JLabel lblMensaje;
-	
+	    private JLabel lblGenero;
+	    private JTextField txtGenero;
+	    private JLabel lblPaginas;
+	    private JTextField txtPaginas;
+	    private JLabel lblTema;
+	    private JTextField txtTema;
+	    private JLabel lblRamaDeCiencia;
+	    private JTextField txtRamaDeCiencia;
+	    private JLabel lblTempo;
 
 	    public RegistroPublicacion() {
 	        initComponents();
@@ -83,7 +91,7 @@ public class RegistroPublicacion extends JFrame{
 	        this.add(txtAutor);
 	        
 	        lblAnio = new JLabel("Año:");
-	        lblAnio.setFont(fontLabel);
+	        lblAnio.setFont(fontField);
 	        lblAnio.setBounds(100, 220, 180, 25);
 	        this.add(lblAnio);
 	        
@@ -92,8 +100,56 @@ public class RegistroPublicacion extends JFrame{
 	        txtAnio.setBounds(150, 220, 200, 25);
 	        this.add(txtAnio);
 	        
+	        lblGenero = new JLabel("Género:");
+	        lblGenero.setFont(fontField);
+	        lblGenero.setBounds(100, 255, 180, 25);
+	        lblGenero.setVisible(false); // Oculto al inicio
+	        this.add(lblGenero);
+
+	        txtGenero = new JTextField();
+	        txtGenero.setFont(fontField);
+	        txtGenero.setBounds(150, 255, 200, 25);
+	        txtGenero.setVisible(false);
+	        this.add(txtGenero);
+
+	        lblPaginas = new JLabel("Páginas:");
+	        lblPaginas.setFont(fontField);
+	        lblPaginas.setBounds(100, 290, 180, 25);
+	        lblPaginas.setVisible(false);
+	        this.add(lblPaginas);
+
+	        txtPaginas = new JTextField();
+	        txtPaginas.setFont(fontField);
+	        txtPaginas.setBounds(150, 290, 200, 25);
+	        txtPaginas.setVisible(false);
+	        this.add(txtPaginas);
+	        
+	        lblTema = new JLabel("Tema del artículo:");
+	        lblTema.setFont(fontField);
+	        lblTema.setBounds(20, 255, 180, 25);
+	        lblTema.setVisible(false);
+	        this.add(lblTema);
+	        
+	        txtTema = new JTextField();
+	        txtTema.setFont(fontField);
+	        txtTema.setBounds(150, 255, 200, 25);
+	        txtTema.setVisible(false);
+	        this.add(txtTema);
+
+	        lblRamaDeCiencia = new JLabel("Rama de la ciencia:");
+	        lblRamaDeCiencia.setFont(fontField);
+	        lblRamaDeCiencia.setBounds(20, 290, 180, 25);
+	        lblRamaDeCiencia.setVisible(false);
+	        this.add(lblRamaDeCiencia);
+	        
+	        txtRamaDeCiencia = new JTextField();
+	        txtRamaDeCiencia.setFont(fontField);
+	        txtRamaDeCiencia.setBounds(150, 290, 200, 25);
+	        txtRamaDeCiencia.setVisible(false);
+	        this.add(txtRamaDeCiencia);
+	        
 	        btnCrear = new JButton("Registrar ");
-	        btnCrear.setFont(new Font("Segoe UI", Font.BOLD, 14));
+	        btnCrear.setFont(fontField);
 	        btnCrear.setBounds(500, 110, 200, 40);
 	        btnCrear.setBackground(new Color(52, 168, 83));
 	        btnCrear.setForeground(Color.WHITE);
@@ -101,7 +157,7 @@ public class RegistroPublicacion extends JFrame{
 	        this.add(btnCrear);
 
 	        btnMostrar = new JButton("Mostrar ");
-	        btnMostrar.setFont(new Font("Segoe UI", Font.BOLD, 14));
+	        btnMostrar.setFont(fontField);
 	        btnMostrar.setBounds(500, 160, 200, 40);
 	        btnMostrar.setBackground(new Color(66, 133, 244));
 	        btnMostrar.setForeground(Color.WHITE);
@@ -111,7 +167,7 @@ public class RegistroPublicacion extends JFrame{
 	      
 	        
 	        btnVolver = new JButton("Volver");
-	        btnVolver.setFont(new Font("Segoe UI", Font.BOLD, 14));
+	        btnVolver.setFont(fontField);
 	        btnVolver.setBounds(500, 210, 200, 40);
 	        btnVolver.setBackground(new Color(100, 100, 100));
 	        btnVolver.setForeground(Color.WHITE);
@@ -119,13 +175,7 @@ public class RegistroPublicacion extends JFrame{
 	        this.add(btnVolver);
 
 	        
-	        btnSalir = new JButton("Salir");
-	        btnSalir.setFont(new Font("Segoe UI", Font.BOLD, 14));
-	        btnSalir.setBounds(500, 260, 200, 40);
-	        btnSalir.setBackground(Color.GRAY);
-	        btnSalir.setForeground(Color.WHITE);
-	        btnSalir.setFocusPainted(false);
-	        this.add(btnSalir);
+	        
 	    }
 
 		public JButton getBtnEnviar() {
@@ -244,6 +294,70 @@ public class RegistroPublicacion extends JFrame{
 
 		public void setLblMensaje(JLabel lblMensaje) {
 			this.lblMensaje = lblMensaje;
+		}
+
+		public JLabel getLblGenero() {
+			return lblGenero;
+		}
+
+		public void setLblGenero(JLabel lblGenero) {
+			this.lblGenero = lblGenero;
+		}
+
+		public JTextField getTxtGenero() {
+			return txtGenero;
+		}
+
+		public void setTxtGenero(JTextField txtGenero) {
+			this.txtGenero = txtGenero;
+		}
+
+		public JLabel getLblPaginas() {
+			return lblPaginas;
+		}
+
+		public void setLblPaginas(JLabel lblPaginas) {
+			this.lblPaginas = lblPaginas;
+		}
+
+		public JTextField getTxtPaginas() {
+			return txtPaginas;
+		}
+
+		public void setTxtPaginas(JTextField txtPaginas) {
+			this.txtPaginas = txtPaginas;
+		}
+
+		public JLabel getLblTema() {
+			return lblTema;
+		}
+
+		public void setLblTema(JLabel lblTema) {
+			this.lblTema = lblTema;
+		}
+
+		public JTextField getTxtTema() {
+			return txtTema;
+		}
+
+		public void setTxtTema(JTextField txtTema) {
+			this.txtTema = txtTema;
+		}
+
+		public JLabel getLblRamaDeCiencia() {
+			return lblRamaDeCiencia;
+		}
+
+		public void setLblRamaDeCiencia(JLabel lblRamaDeCiencia) {
+			this.lblRamaDeCiencia = lblRamaDeCiencia;
+		}
+
+		public JTextField getTxtRamaDeCiencia() {
+			return txtRamaDeCiencia;
+		}
+
+		public void setTxtRamaDeCiencia(JTextField txtRamaDeCiencia) {
+			this.txtRamaDeCiencia = txtRamaDeCiencia;
 		}
 
 		
