@@ -30,7 +30,7 @@ public class Controlador implements ActionListener {
 
 	private MenuPrincipal mp;
 	private RegistroPublicacion rp;
-
+    private MostrarDatos md;
 	private LibroDAO libroDAO;
 	private ArticuloCientificoDAO articuloDAO;
 	private PartituraDAO partituraDAO;
@@ -47,6 +47,7 @@ public class Controlador implements ActionListener {
 
 		mp = new MenuPrincipal();
 		rp = new RegistroPublicacion();
+		md = new MostrarDatos();
 
 		libroDAO = new LibroDAO();
 		partituraDAO = new PartituraDAO();
@@ -319,7 +320,7 @@ public class Controlador implements ActionListener {
 		case "BOTON_MOSTRAR":
 		    mp.setVisible(false); 
 
-		    new MostrarDatos(
+		    MostrarDatos md = new MostrarDatos(
 		        mp,
 		        libroDAO.mostrar(), articuloDAO.mostrar(),
 		        partituraDAO.mostrar(), peliculaDAO.mostrar(),
@@ -330,7 +331,67 @@ public class Controlador implements ActionListener {
 		        revistaDAO.contar(), tesisDAO.contar(),
 		        trabajoDAO.contar()
 		    );
+
+		    md.getBtnFiltrar().addActionListener(f -> {
+		        String texto = md.getTxtBuscar().getText().trim();
+		        String tipo = md.getComboTipo().getSelectedItem().toString();
+		        String campo = md.getComboCriterio().getSelectedItem().toString(); 
+		        String resultado = "";
+
+		        if (texto.isEmpty()) {
+		            JOptionPane.showMessageDialog(null, "Por favor ingresa un valor para filtrar.", "Filtro vacío", JOptionPane.WARNING_MESSAGE);
+		            return;
+		        }
+
+		        Object valor;
+		        try {
+		            valor = Integer.parseInt(texto);
+		        } catch (NumberFormatException ex) {
+		            valor = texto;
+		        }
+
+		        switch (tipo) {
+		            case "Libros":
+		                resultado = "Libros:\n" + libroDAO.filtrar(campo, valor);
+		                break;
+		            case "Artículos":
+		                resultado = "Artículos:\n" + articuloDAO.filtrar(campo, valor);
+		                break;
+		            case "Partituras":
+		                resultado = "Partituras:\n" + partituraDAO.filtrar(campo, valor);
+		                break;
+		            case "Películas":
+		                resultado = "Películas:\n" + peliculaDAO.filtrar(campo, valor);
+		                break;
+		            case "Revistas":
+		                resultado = "Revistas:\n" + revistaDAO.filtrar(campo, valor);
+		                break;
+		            case "Tesis":
+		                resultado = "Tesis:\n" + tesisDAO.filtrar(campo, valor);
+		                break;
+		            case "Trabajos":
+		                resultado = "Trabajos de Grado:\n" + trabajoDAO.filtrar(campo, valor);
+		                break;
+		            case "Todos":
+		            default:
+		                resultado += "Libros:\n" + libroDAO.filtrar(campo, valor) + "\n-------------------------------\n";
+		                resultado += "Artículos:\n" + articuloDAO.filtrar(campo, valor) + "\n-------------------------------\n";
+		                resultado += "Partituras:\n" + partituraDAO.filtrar(campo, valor) + "\n-------------------------------\n";
+		                resultado += "Películas:\n" + peliculaDAO.filtrar(campo, valor) + "\n-------------------------------\n";
+		                resultado += "Revistas:\n" + revistaDAO.filtrar(campo, valor) + "\n-------------------------------\n";
+		                resultado += "Tesis:\n" + tesisDAO.filtrar(campo, valor) + "\n-------------------------------\n";
+		                resultado += "Trabajos de Grado:\n" + trabajoDAO.filtrar(campo, valor) + "\n-------------------------------\n";
+		                break;
+		        }
+
+		        if (resultado.trim().isEmpty()) {
+		            md.getAreaResultado().setText("No se encontraron coincidencias.");
+		        } else {
+		            md.getAreaResultado().setText(resultado);
+		        }
+		    });
 		    break;
+
 
 
 		case "BOTON_ACTUALIZAR": {

@@ -3,6 +3,7 @@ package co.edu.unbosque.model.persistence;
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.Partitura;
+import co.edu.unbosque.model.Partitura;
 
 public class PartituraDAO implements DAO<Partitura> {
 
@@ -63,30 +64,25 @@ public class PartituraDAO implements DAO<Partitura> {
 	}
 
 	@Override
-	public String filtrar(Object datoABuscar) {
-		String encontrado = "";
-
-		for (Partitura partitura : listaPartitura) {
-			// Si el dato es un String → buscar en autor o título
-			if (datoABuscar instanceof String) {
-				String texto = (String) datoABuscar;
-				if (partitura.getAutor().equalsIgnoreCase(texto) || partitura.getTitulo().equalsIgnoreCase(texto)
-					|| partitura.getClave().equalsIgnoreCase(texto)) {
-					
-					encontrado += partitura;
-				}
-			}
-			// Si el dato es un Integer → buscar por año
-			else if (datoABuscar instanceof Integer) {
-				int num = (Integer) datoABuscar;
-				if (partitura.getAnio() == num || partitura.getTempo() == num) {
-					
-					encontrado += partitura ;
-				}
+	public String filtrar(String campo, Object valor) {
+		StringBuilder resultado = new StringBuilder();
+		for (Partitura l : listaPartitura) {
+			switch (campo) {
+			case "Título":
+				if (l.getTitulo().equalsIgnoreCase(valor.toString()))
+					resultado.append(l.toString()).append("\n");
+				break;
+			case "Autor":
+				if (l.getAutor().equalsIgnoreCase(valor.toString()))
+					resultado.append(l.toString()).append("\n");
+				break;
+			case "Año":
+				if (valor instanceof Integer && l.getAnio() == (int) valor)
+					resultado.append(l.toString()).append("\n");
+				break;
 			}
 		}
-
-		return encontrado;
+		return resultado.toString();
 	}
 
 	@Override

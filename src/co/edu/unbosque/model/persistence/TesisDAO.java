@@ -3,6 +3,7 @@ package co.edu.unbosque.model.persistence;
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.Tesis;
+import co.edu.unbosque.model.Tesis;
 
 public class TesisDAO implements DAO<Tesis> {
 
@@ -63,30 +64,22 @@ public class TesisDAO implements DAO<Tesis> {
 	}
 
 	@Override
-	public String filtrar(Object datoABuscar) {
-		String encontrado = "";
-
-		for (Tesis tesis : listaTesis) {
-			// Si el dato es un String → buscar en autor o título
-			if (datoABuscar instanceof String) {
-				String texto = (String) datoABuscar;
-				if (tesis.getAutor().equalsIgnoreCase(texto) || tesis.getTitulo().equalsIgnoreCase(texto)
-					|| tesis.getTema1().equalsIgnoreCase(texto)) {
-				
-					encontrado += tesis;
-				}
-			}
-			// Si el dato es un Integer → buscar por año
-			else if (datoABuscar instanceof Integer) {
-				int num = (Integer) datoABuscar;
-				if (tesis.getAnio() == num || tesis.getNumPagina() == num) {
-					
-					encontrado += tesis;
-				}
-			}
-		}
-
-		return encontrado;
+	public String filtrar(String campo, Object valor) {
+	    StringBuilder resultado = new StringBuilder();
+	    for (Tesis l : listaTesis) {
+	        switch (campo) {
+            case "Título":
+                if (l.getTitulo().equalsIgnoreCase(valor.toString())) resultado.append(l.toString()).append("\n");
+                break;
+            case "Autor":
+                if (l.getAutor().equalsIgnoreCase(valor.toString())) resultado.append(l.toString()).append("\n");
+                break;
+            case "Año":
+                if (valor instanceof Integer && l.getAnio() == (int) valor) resultado.append(l.toString()).append("\n");
+                break;
+	        }
+	    }
+	    return resultado.toString();
 	}
 
 	@Override

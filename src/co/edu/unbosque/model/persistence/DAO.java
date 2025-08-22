@@ -7,7 +7,7 @@ public interface DAO <E>{
 	public boolean eliminiar(int indice);//incluye FeedBack por eso necesita un boolean y el FeedBack se muestra con un JOptionpanel
 	public boolean eliminiar(E objetoAEliminar);
 	public boolean actualizar(int indice, E datoActualizado);//Necesita dar FeedBack si es posible hace la operacion o no
-	public String filtrar(Object datoABuscar);
+	public String filtrar(String campo, Object valor);
 	public int contar();
 	
 

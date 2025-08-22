@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import co.edu.unbosque.model.ArticuloCientifico;
 
+
+
 public class ArticuloCientificoDAO implements DAO<ArticuloCientifico> {
 
 	private ArrayList<ArticuloCientifico> listaArticulos;
@@ -64,29 +66,22 @@ public class ArticuloCientificoDAO implements DAO<ArticuloCientifico> {
 	}
 
 	@Override
-	public String filtrar(Object datoABuscar) {
-		String encontrado="";
-
-		for (ArticuloCientifico articulo : listaArticulos) {
-			// Si el dato es un String → buscar en autor o título
-			if (datoABuscar instanceof String) {
-				String texto = (String) datoABuscar;
-				if (articulo.getAutor().equalsIgnoreCase(texto) || articulo.getTitulo().equalsIgnoreCase(texto)
-					|| articulo.getTema().equalsIgnoreCase(texto) || articulo.getRamaDeCiencia().equalsIgnoreCase(texto)) {
-					
-					encontrado += articulo;
-				}
-			}
-			// Si el dato es un Integer → buscar por año
-			else if (datoABuscar instanceof Integer) {
-				int anio = (Integer) datoABuscar;
-				if (articulo.getAnio() == anio) {
-					
-					encontrado += articulo;
-				}
-			}
-		}
-		return encontrado;
+	public String filtrar(String campo, Object valor) {
+	    StringBuilder resultado = new StringBuilder();
+	    for (ArticuloCientifico l : listaArticulos) {
+	        switch (campo) {
+            case "Título":
+                if (l.getTitulo().equalsIgnoreCase(valor.toString())) resultado.append(l.toString()).append("\n");
+                break;
+            case "Autor":
+                if (l.getAutor().equalsIgnoreCase(valor.toString())) resultado.append(l.toString()).append("\n");
+                break;
+            case "Año":
+                if (valor instanceof Integer && l.getAnio() == (int) valor) resultado.append(l.toString()).append("\n");
+                break;
+	        }
+	    }
+	    return resultado.toString();
 	}
 
 	@Override

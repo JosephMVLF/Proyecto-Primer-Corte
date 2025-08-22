@@ -2,6 +2,7 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
+
 import co.edu.unbosque.model.TrabajoDeGrado;
 
 public class TrabajoDeGradoDAO implements DAO<TrabajoDeGrado> {
@@ -64,30 +65,22 @@ public class TrabajoDeGradoDAO implements DAO<TrabajoDeGrado> {
 	}
 
 	@Override
-	public String filtrar(Object datoABuscar) { // Case con cada atributo
-		String encontrado = "";
-
-		for (TrabajoDeGrado trabajo : listaTrabajoDeGrado) {
-			// Si el dato es un String → buscar en autor o título
-			if (datoABuscar instanceof String) {
-				String texto = (String) datoABuscar;
-				if (trabajo.getAutor().equalsIgnoreCase(texto) || trabajo.getTitulo().equalsIgnoreCase(texto)
-					|| trabajo.getCarreraAutor().equalsIgnoreCase(texto) || trabajo.getTema2().equalsIgnoreCase(texto)) {
-					
-					encontrado += trabajo;
-				}
-			}
-			// Si el dato es un Integer → buscar por año
-			else if (datoABuscar instanceof Integer) {
-				int anio = (Integer) datoABuscar;
-				if (trabajo.getAnio() == anio) {
-					
-					encontrado += trabajo;
-				}
-			}
-		}
-
-		return encontrado;
+	public String filtrar(String campo, Object valor) {
+	    StringBuilder resultado = new StringBuilder();
+	    for (TrabajoDeGrado l : listaTrabajoDeGrado) {
+	        switch (campo) {
+            case "Título":
+                if (l.getTitulo().equalsIgnoreCase(valor.toString())) resultado.append(l.toString()).append("\n");
+                break;
+            case "Autor":
+                if (l.getAutor().equalsIgnoreCase(valor.toString())) resultado.append(l.toString()).append("\n");
+                break;
+            case "Año":
+                if (valor instanceof Integer && l.getAnio() == (int) valor) resultado.append(l.toString()).append("\n");
+                break;
+	        }
+	    }
+	    return resultado.toString();
 	}
 
 	@Override

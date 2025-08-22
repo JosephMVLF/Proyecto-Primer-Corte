@@ -3,6 +3,7 @@ package co.edu.unbosque.model.persistence;
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.Pelicula;
+import co.edu.unbosque.model.Pelicula;
 
 public class PeliculaDAO implements DAO<Pelicula> {
 
@@ -54,38 +55,22 @@ public class PeliculaDAO implements DAO<Pelicula> {
 	}
 
 	@Override
-	public String filtrar(Object datoABuscar) {
-		String encontrado = "";
-
-		for (Pelicula pelicula : listaPelicula) {
-			// Si el dato es un String → buscar en autor o título
-			if (datoABuscar instanceof String) {
-				String texto = (String) datoABuscar;
-				if (pelicula.getAutor().equalsIgnoreCase(texto) || pelicula.getTitulo().equalsIgnoreCase(texto)
-					|| pelicula.getDirector().equalsIgnoreCase(texto)) {
-					
-					encontrado += pelicula;
-				}
-			}
-			// Si el dato es un Integer → buscar por año
-			else if (datoABuscar instanceof Integer) {
-				int anio = (Integer) datoABuscar;
-				if (pelicula.getAnio() == anio) {
-					
-					encontrado += pelicula;
-				}
-			}
-			else if (datoABuscar instanceof Float) {
-				float duracion  = (Float) datoABuscar;
-				if (pelicula.getDuracion() == duracion) {
-					
-					encontrado += pelicula;
-				}
-			}
-			
-		}
-
-		return encontrado;
+	public String filtrar(String campo, Object valor) {
+	    StringBuilder resultado = new StringBuilder();
+	    for (Pelicula l : listaPelicula) {
+	        switch (campo) {
+            case "Título":
+                if (l.getTitulo().equalsIgnoreCase(valor.toString())) resultado.append(l.toString()).append("\n");
+                break;
+            case "Autor":
+                if (l.getAutor().equalsIgnoreCase(valor.toString())) resultado.append(l.toString()).append("\n");
+                break;
+            case "Año":
+                if (valor instanceof Integer && l.getAnio() == (int) valor) resultado.append(l.toString()).append("\n");
+                break;
+	        }
+	    }
+	    return resultado.toString();
 	}
 
 	@Override

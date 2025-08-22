@@ -63,30 +63,22 @@ public class LibroDAO implements DAO<Libro> {
 	}
 
 	@Override
-	public String filtrar(Object datoABuscar) {
-		String encontrado = "";
-
-		for (Libro libro : listaLibro) {
-			// Si el dato es un String → buscar en autor o título
-			if (datoABuscar instanceof String) {
-				String texto = (String) datoABuscar;
-				if (libro.getAutor().equalsIgnoreCase(texto) || libro.getTitulo().equalsIgnoreCase(texto) 
-					|| libro.getGenero().equalsIgnoreCase(texto)) {
-					
-					encontrado += libro;
-				}
-			}
-			// Si el dato es un Integer → buscar por año
-			else if (datoABuscar instanceof Integer) {
-				int num = (Integer) datoABuscar;
-				if (libro.getAnio() == num || libro.getPagina() == num) {
-				
-					encontrado += libro;
-				}
-			}
-		}
-
-		return encontrado;
+	public String filtrar(String campo, Object valor) {
+	    StringBuilder resultado = new StringBuilder();
+	    for (Libro l : listaLibro) {
+	        switch (campo) {
+            case "Título":
+                if (l.getTitulo().equalsIgnoreCase(valor.toString())) resultado.append(l.toString()).append("\n");
+                break;
+            case "Autor":
+                if (l.getAutor().equalsIgnoreCase(valor.toString())) resultado.append(l.toString()).append("\n");
+                break;
+            case "Año":
+                if (valor instanceof Integer && l.getAnio() == (int) valor) resultado.append(l.toString()).append("\n");
+                break;
+	        }
+	    }
+	    return resultado.toString();
 	}
 
 	@Override

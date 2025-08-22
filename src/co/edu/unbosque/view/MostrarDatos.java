@@ -6,27 +6,31 @@ import java.awt.*;
 public class MostrarDatos extends JFrame {
     private static final long serialVersionUID = 1L;
     private JFrame ventanaPrincipal;
+    private JTextField txtBuscar;
+    private JButton btnFiltrar;
+    private JTextArea areaResultado;
+    private JComboBox<String> comboTipo;
+    private JComboBox<String> comboCriterio;
 
-    public MostrarDatos(
-        JFrame ventanaPrincipal,
-        String resumenLibros, String resumenArticulos,
-        String resumenPartituras, String resumenPeliculas,
-        String resumenRevistas, String resumenTesis,
-        String resumenTrabajos,
-        int totalLibros, int totalArticulos,
-        int totalPartituras, int totalPeliculas,
-        int totalRevistas, int totalTesis,
-        int totalTrabajos
-    ) {
+    
+    public MostrarDatos() {
+	}
+
+    public MostrarDatos(JFrame ventanaPrincipal, String resumenLibros, String resumenArticulos,
+            String resumenPartituras, String resumenPeliculas, String resumenRevistas, String resumenTesis,
+            String resumenTrabajos, int totalLibros, int totalArticulos, int totalPartituras, int totalPeliculas,
+            int totalRevistas, int totalTesis, int totalTrabajos) {
+
         this.ventanaPrincipal = ventanaPrincipal;
 
         setTitle("Resumen de Publicaciones");
-        setSize(800, 600);
+        setExtendedState(JFrame.MAXIMIZED_BOTH); 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        int totalGeneral = totalLibros + totalArticulos + totalPartituras + totalPeliculas +
-                           totalRevistas + totalTesis + totalTrabajos;
+       
+        int totalGeneral = totalLibros + totalArticulos + totalPartituras + totalPeliculas + totalRevistas + totalTesis
+                + totalTrabajos;
 
         JPanel conteoPanel = new JPanel(new GridLayout(0, 1));
         conteoPanel.setBorder(BorderFactory.createTitledBorder("Conteo de Publicaciones"));
@@ -39,6 +43,7 @@ public class MostrarDatos extends JFrame {
         conteoPanel.add(new JLabel("Trabajos de Grado: " + totalTrabajos));
         conteoPanel.add(new JLabel("Total de Publicaciones: " + totalGeneral));
 
+        
         JTabbedPane tabs = new JTabbedPane();
         tabs.addTab("Libros", crearArea(resumenLibros));
         tabs.addTab("Artículos Científicos", crearArea(resumenArticulos));
@@ -48,24 +53,113 @@ public class MostrarDatos extends JFrame {
         tabs.addTab("Tesis", crearArea(resumenTesis));
         tabs.addTab("Trabajos de Grado", crearArea(resumenTrabajos));
 
+        
+        JPanel panelBusqueda = new JPanel();
+        txtBuscar = new JTextField(20);
+        btnFiltrar = new JButton("Filtrar");
+
+        String[] tipos = { "Todos", "Libros", "Artículos", "Partituras", "Películas", "Revistas", "Tesis", "Trabajos" };
+        comboTipo = new JComboBox<>(tipos);
+
+        String[] criterios = { "Título", "Autor", "Año"};
+        comboCriterio = new JComboBox<>(criterios);
+
+        panelBusqueda.add(new JLabel("Buscar:"));
+        panelBusqueda.add(txtBuscar);
+        panelBusqueda.add(new JLabel("Tipo:"));
+        panelBusqueda.add(comboTipo);
+        panelBusqueda.add(new JLabel("Criterio:"));
+        panelBusqueda.add(comboCriterio);
+        panelBusqueda.add(btnFiltrar);
+
+
+        
+        areaResultado = new JTextArea(10, 60);
+        areaResultado.setEditable(false);
+        areaResultado.setFont(new Font("Monospaced", Font.PLAIN, 12));
+        JScrollPane scrollResultado = new JScrollPane(areaResultado);
+        JPanel panelResultado = new JPanel(new BorderLayout());
+        panelResultado.setBorder(BorderFactory.createTitledBorder("Resultados del filtro"));
+        panelResultado.add(scrollResultado, BorderLayout.CENTER);
+
+        
         JButton aceptarBtn = new JButton("Aceptar");
         aceptarBtn.addActionListener(e -> {
-            ventanaPrincipal.setVisible(true); // Volver a mostrar la ventana principal
-            dispose(); // Cerrar esta ventana
+            ventanaPrincipal.setVisible(true);
+            dispose();
         });
 
+       
+        JPanel centroPanel = new JPanel(new BorderLayout());
+        centroPanel.add(tabs, BorderLayout.CENTER);
+        centroPanel.add(panelResultado, BorderLayout.SOUTH);
+
         add(conteoPanel, BorderLayout.NORTH);
-        add(tabs, BorderLayout.CENTER);
+        add(panelBusqueda, BorderLayout.WEST);
+        add(centroPanel, BorderLayout.CENTER);
         add(aceptarBtn, BorderLayout.SOUTH);
 
         setVisible(true);
     }
 
-    private JScrollPane crearArea(String contenido) {
+    public JComboBox<String> getComboCriterio() {
+		return comboCriterio;
+	}
+
+	public void setComboCriterio(JComboBox<String> comboCriterio) {
+		this.comboCriterio = comboCriterio;
+	}
+
+	private JScrollPane crearArea(String contenido) {
         JTextArea area = new JTextArea(contenido);
         area.setEditable(false);
         area.setFont(new Font("Monospaced", Font.PLAIN, 12));
         return new JScrollPane(area);
     }
-}
 
+	public JFrame getVentanaPrincipal() {
+		return ventanaPrincipal;
+	}
+
+	public void setVentanaPrincipal(JFrame ventanaPrincipal) {
+		this.ventanaPrincipal = ventanaPrincipal;
+	}
+
+	public JTextField getTxtBuscar() {
+		return txtBuscar;
+	}
+
+	public void setTxtBuscar(JTextField txtBuscar) {
+		this.txtBuscar = txtBuscar;
+	}
+
+	public JButton getBtnFiltrar() {
+		return btnFiltrar;
+	}
+
+	public void setBtnFiltrar(JButton btnFiltrar) {
+		this.btnFiltrar = btnFiltrar;
+	}
+
+	public JTextArea getAreaResultado() {
+		return areaResultado;
+	}
+
+	public void setAreaResultado(JTextArea areaResultado) {
+		this.areaResultado = areaResultado;
+	}
+
+	public JComboBox<String> getComboTipo() {
+		return comboTipo;
+	}
+
+	public void setComboTipo(JComboBox<String> comboTipo) {
+		this.comboTipo = comboTipo;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+}
